@@ -1,0 +1,114 @@
+<: 
+#c// ####################################################################
+#c// Album theme created by Lucian Precup (lucian_precup@yahoo.com).
+#c// ####################################################################
+#c// 
+#c// You can try the following command line options:
+#c// album -index index -medium 600x400 -theme /path/to/album/Themes/kde_style -columns 5 -no_crop -geometry=120x90
+#c// but any other set of options would yield nice results too.
+#c// 
+
+$THEME_CREDIT = "";
+$PATH = Theme_Path();
+$COLS = Get_Opt("columns");
+$CELLSPACING = 4;
+$COLS_PERC = int(100/$COLS - $CELLSPACING);
+:>
+<html>
+  <head>
+    <title>Album: <: pAlbum_Name() :></title>
+    <: Meta() :>
+    <LINK REL='stylesheet' HREF='<:=$PATH:>/kde_style.css' TYPE='text/css'>
+</head>
+<body>
+  <table border='0' width='95%' cellspacing='0' cellpadding='0' align='center'>
+    <TR>
+      <td COLSPAN='<:=($COLS*2-2):>' align='left' class='color1'>
+        <b><: pJoin_Parent_Albums(" &gt; "); :></b>
+      </td>
+      <td align='right' class='color1'>
+        <a href=<:=Back():>><img src='<:=$PATH:>/icons/up.png' alt='up' border='0' align='BOTTOM'>&nbsp;up</a>
+      </td>
+    </TR>
+<: if (isHeader()) { :>
+    <TR>
+      <td colspan='<:=($COLS*2-1):>' class='color3' align='center'>
+        <:pHeader():>         
+      </td>
+    </TR>
+<: } :>
+    <TR>
+      <TD COLSPAN='<:=($COLS*2-1):>'> &nbsp; </TD>
+    </TR>
+
+#c// Are there more albums below this one?
+<: if ( Child_Albums() || (Images()) ) { :>
+    <tr>
+#c// Loop on all the albums
+<:    while (Child_Albums()) { :>
+        <td class='color2' ALIGN='center' VALIGN='baseline' WIDTH='<:=$COLS_PERC:>%'>
+            <a href=<:=Child_Album_URL():>><img src='<:=$PATH:>/icons/folder.png' HSPACE='7' VSPACE='7' border='0'><br><:=Child_Album_Name():></a>
+        </td>
+<:      if ( !(Child_Album_Cnt() % $COLS) && (Child_Albums_Left() || Images_Left()) ) { :>
+	  <TR>
+	    <TD COLSPAN='<:=($COLS*2-1):>'> &nbsp; </TD>
+	  </TR>
+<:      } else { :>
+          <TD WIDTH='<:=$CELLSPACING:>%'>
+	    &nbsp;
+          </TD>
+<:      } :>
+<:    Next_Child_Album() :>
+<:    } :>
+#c// End album loop
+
+#c// Loop on the images
+<:    while(Images()) { :>
+        <td class='color2' ALIGN='center' VALIGN='baseline' WIDTH='<:=$COLS_PERC:>%'>
+<: if (Image_Is_Pic() || is_movie()) { :>
+          <a href=<:=Image_URL():>><img src=<:=Image_Thumb():> HSPACE='7' VSPACE='7' border='0'><br><:=Image_Name():></a>
+<: } else { :>
+          <a href=<:=Image_URL():>><img src='<:=$PATH:>/icons/html.png' HSPACE='7' VSPACE='7' border='0'><br><:=Image_Name():></a><br>
+	  <!--font size='-2'><:pImage_Caption():></font-->
+<: } :>
+        </td>
+<:      if (!((Child_Album_Cnt() + Image_Cnt() - 1) % $COLS) && Images_Left()) { :>
+	  <TR>
+	    <TD COLSPAN='<:=($COLS*2-1):>'> &nbsp; </TD>
+	  </TR>
+<:      } else { :>
+          <TD WIDTH='<:=$CELLSPACING:>%'>
+	    &nbsp;
+          </TD>
+<:      } :>
+<:    Next_Image() :>
+<:    } :>
+#c// End while images
+    </tr>
+    <TR>
+      <TD COLSPAN='<:=($COLS*2-1):>'> &nbsp; </TD>
+    </TR>
+<: if (isFooter()) { :>
+    <TR>
+      <td colspan='<:=($COLS*2-1):>' align='center'>
+        <:pFooter():>         
+      </td>
+    </TR>
+<: } :>
+    <TR>
+      <TD COLSPAN='<:=($COLS*2-1):>' class='color3'>&nbsp;
+        <: if ((Child_Album_Cnt() - 1) > 0) {:>        
+          <:=(Child_Album_Cnt() - 1):> sub-albums and 
+	<: } :>
+        <:=(Image_Cnt() - 1):> files in this album</TD>
+    </TR>
+  </table>
+#c// End if images
+<:  } :>
+
+<hr>
+    <font size='-2'>
+      <: Credit() :>. <:=$THEME_CREDIT:> Last updated: <:=scalar localtime:>
+    </font>
+  </body>
+</html>

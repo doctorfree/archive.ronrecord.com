@@ -1,0 +1,6 @@
+$text_color = "#000000";
+$link_color = "#603913";
+$TITLE_FONT = "size='5' color='$text_color' face='Times New Roman,Georgia,Times'";
+$MAIN_FONT = "face='Times New Roman,Georgia,Times'";
+$CREDIT_FONT = "face='Verdana' color='$text_color'";
+$BODY = "bgcolor='white' link='$link_color' alink='$link_color' vlink='$link_color' text='$text_color'";

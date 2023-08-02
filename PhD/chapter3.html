@@ -1,0 +1,225 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>User's Guide - Chapter 3</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
+ALINK="#FF0000" BACKGROUND="/gif/bk.gif" 
+WIDTH=70 HEIGHT=64>
+<P>
+<B>Chapter 3  Interactive Run-time Control<!--Chapter 3 - Interactive
+Control--></B><!--Interactive control-->
+<P>
+<B>3.1 Playing with the title screen and demo<!--3.1 Title screen
+and demo--></B>
+<P>
+If <B>endo</B> is invoked with no arguments, a title screen is
+displayed. The full-screen window welcomes. In the center of the
+screen a graphic is displayed. At the bottom of the screen are
+instructions for use of the program. The user can choose to allow
+<B>endo</B> to randomly demonstrate some of its features or continue
+on to the menu of maps. If the user wants to proceed on, she can
+press the space bar or click any mouse button. If she decides
+to watch the demo, several keys provide limited interactive control.
+
+<P>
+Pressing the 'n' key causes <B>endo</B> to go on to the next demo,
+'p' the previous demo. The 'w' key installs another color palette.
+Pressing 'q' quits the program.
+<P>
+<B>3.2 Selecting a map and view<!--3.2 Selecting a map and view
+--></B><!--Mapselection-->
+<P>
+The menu of maps presents the user with a list of the available
+maps, the current settings for settle<!--Settle--> and dwell<!--Dwell
+-->, and a list of the views. This screen and the title screen
+are not displayed if the &quot;<B>-T #</B>&quot; option was present.
+Click the left mouse button to select the desired map. The selected
+map will be highlighted. Clicking the right and left mouse buttons
+in the settle<!--Settle--> or dwell<!--Dwell--> areas of the screen
+will increase and decrease the values. Clicking the left mouse
+button in the view areas to the right of the screen will toggle
+the selection of those views. Pressing the space bar or clicking
+the right mouse button will bring up the selected views and begin
+the iterations.
+<P>
+<B>3.3 The information and help windows<!--3.3 The information
+and help windows--></B><!--Information and help-->
+<P>
+The display of an &quot;information&quot; window can be toggled
+by pressing ''. This window contains the map<!--Mapinformation
+--> definition, parameter values currently selected, ranges of
+the views selected and other data relevant to the map and views.
+The information window will also display the modes that <B>endo
+</B> is currently running in. For instance, whether critical curve
+<!--Critical curvesinformation window--> detection is on, whether
+periodic orbit detection is on, what level of &quot;Mandelbrot&quot;
+mode has been selected and what the escape radius is.
+<P>
+The display of a &quot;help&quot; window can be toggled by pressing
+'<B>h</B>' or '<B>?</B>'. This window contains a terse description
+of the interactive run-time control available via the keyboard
+and mouse. The information and help windows cannot be panned or
+zoomed and are the only such windows.
+<P>
+<B>3.4 Zooming and panning<!--3.4 Zooming and panning--></B><!--Zooming
+and panning-->
+<P>
+The mouse and/or keyboard can be used to zoom in, zoom out and
+pan in any of the windows. To zoom in with the mouse, position
+the cursor on the upper left corner of the desired zoom box. Click
+and hold the left mouse button while rubber-banding a zoom box.
+When the cursor is on the desired lower right corner, release
+the left mouse button. The rubber-banded box expands to fill the
+window.
+<P>
+To zoom out or pan the window, use the keyboard. Pressing the
+'' key doubles the range of the x and y axes of a window while
+keeping the center point fixed. This effectively quadruples the
+area of the plane displayed in a window. Pressing the '' key reverses
+this by zooming in by a factor of four while keeping the center
+point fixed.
+<P>
+Panning can be accomplished by pressing the '<B>5</B>', '<B>6
+</B>', '<B>7</B>' and '<B>8</B>' keys to pan left, right, down
+and up respectively. Each key slides the window half of the respective
+range, thus positioning the former center at an edge and a former
+edge point at the center. 
+<P>
+<B>3.5 Toggling the views<!--3.5 Toggling the views--></B>
+<P>
+The several views of the dynamics provided in <B>endo</B> can
+be displayed individually or in concert with one another. By default
+the trajectory window is displayed along with either the basins
+of attraction or the Lyapunov exponents. The display of the trajectory
+<!--Trajectorytoggling the view--> window (also used to display
+the bifurcation<!--Bifurcation--> diagrams) can be toggled interactively
+by pressing the '' key. To toggle between the basin window and
+the Lyapunov window, press '<B>L</B>'. The display of the critical
+curve window is toggled via the '<B>C</B>' key and that of the
+precritical curves<!--Critical curvestoggling display--> via the
+'<B>N</B>' key. 
+<P>
+The trajectory<!--Trajectoryerasing--> window can be erased after
+each individual trajectory has been displayed. The '<B>e</B>'
+key toggles this feature. The trajectory window can be cleared
+at any time by pressing '<B>c</B>'. Periodic trajectory<!--Trajectoryperiodic
+--> detection is toggled by pressing the '<B>f</B>' key.
+<P>
+Several views of the bifurcation<!--Bifurcation--> diagrams are
+provided. Pressing '<B>2</B>' steps through these views. By default,
+the bifurcation view is non-erasing and displays the attractor
+as a parameter value is changed over time. The next view presented
+(after pressing '<B>2</B>' once) shows the x coordinate of the
+trajectory<!--Trajectorybifurcation diagram--> on the attractor
+(y-axis) plotted against a parameter (x-axis). The next view uses
+the y-coordinate of the trajectory on the attractor and the final
+view plots both x and y coordinates of the trajectory on the attractor
+against a parameter axis. All of these views can be displayed
+in &quot;animation&quot; mode in which the attractor is erased
+each time the parameter is incremented.
+<P>
+The trajectory<!--Trajectoryin other views--> can be viewed in
+other windows as well. In order to display the trajectory in the
+critical curve<!--Critical curvestrajectory in window--> window,
+press <B>&lt;ctrl&gt;-C</B>. To display the trajectory in either
+the precritical or basin windows, press <B>&lt;ctrl&gt;-T</B>
+or <B>&lt;ctrl&gt;-P</B>.
+<P>
+<B>3.6 Adjusting values<!--3.6 Adjusting values--></B>
+<P>
+Several runtime values can be changed interactively. The settle
+<!--Settle--> and dwell<!--Dwell--> can be increased or decreased.
+To double the settle, press '<B>]</B>'. To halve it, press '<B>[
+</B>'. To double the dwell, press '<B>&gt;</B>'. To halve it,
+press '<B>&lt;</B>'. Likewise, the values of  or  can be halved
+by pressing '<B>{</B>' or '<B>-</B>' and doubled by pressing '
+<B>}</B>' or '<B>+</B>' respectively. Recall, these values set
+the near-periodic and critical curve<!--Critical curvescalculation
+--> detection ranges.
+<P>
+<B>3.7 The color palettes and view enhancements<!--3.7 The color
+palettes and view enhancements--></B>
+<P>
+Included with <B>endo</B> are 16 built-in color palettes and many
+user-defined palettes to select from. To increment the color palette
+index, press '<B>W</B>'. To decrement this index, press '<B>w
+</B>'. The user-defined palette is palette index 0 and is defined
+in the file <B>$HOME/.endomap.</B> Several samples of these files
+are provided in the source distribution in the directory <B>lib/colormaps.
+</B> The user is encouraged to play with the color maps provided
+and create new ones. The author has found that quite often heretofore
+unseen subtleties of the dynamics are strikingly revealed by use
+of an alternate color map.
+<P>
+Several view enhancements are also provided. These include 3-D
+bifurcation<!--Bifurcation--> diagram display, trajectory histogram
+calculation and display, color bar indexing, color palette indexing
+curves and critical arc location and display. The use of 3-D bifurcation
+diagrams is toggled with the '<B>3</B>' key (if this feature was
+turned on at compile time). The author, however, found that 3-D
+enhancements to bifurcation diagrams was not as effective as use
+of the '<B>e</B>' key to turn on the erasure of trajectories.
+In this way, the bifurcation diagram is displayed a slice at a
+time in a &quot;movie&quot; with time representing the parameter
+axis.
+<P>
+The '<B>H</B>' key toggles trajectory histogram<!--Trajectoryhistogram
+--> calculation. Although this feature requires additional memory
+and cpu resources, it achieves a pleasing and appropriate coloration
+of the attractor. The histographic display of an attractor essentially
+represents a probability measure with colors representing densities.
+A color bar showing the range used for the histogram can be displayed
+by pressing <B>&lt;ctrl&gt;-B</B>. The color bar can be displayed
+in either the lower-left or upper-left corners of the window.
+Pressing <B>&lt;ctrl&gt;-O</B> toggles display between these two
+corners.
+<P>
+The algorithm used to calculate the histographic display of the
+trajectory<!--Trajectoryhistogram--> can be modified by pressing
+<B>&lt;ctrl&gt;-V</B>. This brings up a window which displays
+the mapping of histogram values to colors. This mapping can be
+adjusted by use of the keyboard or mouse. Pressing <B>&lt;ctrl&gt;-[,
+&lt;ctrl&gt;-], &lt;ctrl&gt;-^</B>, or <B>&lt;ctrl&gt;-_</B> will
+move the intersection point left, right, upward or downward. The
+intersection point can also be moved by &quot;grabbing&quot; and
+&quot;dragging&quot; it with the mouse. To do this, click the
+left mouse button and hold it down as you move it to the desired
+intersection location. In addition to these adjustments, entirely
+different histogram color mapping functions are available. To
+step through these, press <B>&lt;ctrl&gt;-K</B> or <B>&lt;ctrl&gt;-L
+</B> to decrement or increment the color mapping algorithm index.
+<P>
+<B>3.8 Saving to a file<!--3.8 Saving to a file--></B><!--Saving
+to a file-->
+<P>
+Each of the five main <B>endo</B> windows can be saved to a file.
+When calculating basins, the basin window is saved to a file by
+pressing '<B>F</B>'. The '<B>F</B>' key is also used to save the
+Lyapunov exponent window. To save the trajectory<!--Trajectorysaving
+to a file--> window, press '<B>T</B>'. Pressing '<B>V</B>' or
+'<B>v</B>' saves the critical or precritical curve windows respectively.
+In each case, the file format is Portable Pixmap (PPM) for color
+displays or Portable Bitmap (PBM) for monochrome displays. See
+<B>2.9</B> for command-line arguments to specify the output filename.
+<P>
+<B>3.9 Restarting<!--3.9 Restarting--></B>
+<P>
+You may, at any time, return to either the title screen or menu
+of maps<!--Mapselection--> by pressing '<B>J</B>' or '<B>S</B>'
+respectively. In this way, you can re-initialize the view, parameters
+and map or just view the title demo. If all you want to do is
+change the map, this can be accomplished by pressing the '<B>m
+</B>' key which increments the map index. Incrementing the map
+index leaves all other parameters unchanged. Care should be exercised
+to avoid invalid parameter ranges and initial conditions.
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue3.gif" ALT="">
+<P><A HREF="../resume.pdf">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Back to Dr. Record's Resume</A> or proceed to
+<A HREF="chapter4.html">Chapter 4 of Dr. Record's Ph.D. Thesis
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

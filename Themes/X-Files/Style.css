@@ -1,0 +1,21 @@
+.title {
+	font-family: Verdana;
+	color: lime;
+	font-size: medium;
+}
+.main {
+	font-family: Verdana;
+	color: #777777;
+}
+.credit {
+	font-size: smaller;
+	font-family: Verdana;
+	color: #8b4513;
+}
+BODY {
+	background-color: #000000;
+	color: #777777;
+}
+a:link { color: #33ff00; }
+a:visited { color: #33ff00; }
+a:active { color: #33ff00; }

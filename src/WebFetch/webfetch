@@ -1,0 +1,58 @@
+#!/bin/sh
+#
+# Script to help automate the fetching of news headlines from various
+# sources using the WebFetch perl module and maybe wget
+#
+# Written 01/01/01 by Ron Record (rr@sco.com)
+#
+
+PATH=/usr/local/bin:$PATH
+export PATH
+
+HTROOT=/usr/lib/apache/htdocs/news
+
+# We don't use all these yet
+#
+#SOURCES="WebFetch::CNETnews \
+#         WebFetch::CNNsearch \
+#         WebFetch::COLA \
+#         WebFetch::DebianNews \
+#         WebFetch::Freshmeat \
+#         WebFetch::LinuxTelephony \
+#         WebFetch::LinuxToday \
+#         WebFetch::Slashdot \
+#         WebFetch::32BitsOnline \
+#         WebFetch::YahooBiz"
+#
+# Just these
+#
+SOURCES="WebFetch::Freshmeat \
+         WebFetch::LinuxToday \
+         WebFetch::Slashdot"
+#
+# Add this when i get my site news setup
+#        WebFetch::SiteNews
+#
+
+[ -d $HTROOT ] || mkdir -p $HTROOT
+cd $HTROOT
+echo "Headlines as of `date` " > $HTROOT/fetch_time.html 
+for i in $SOURCES
+do
+    perl -w -M$i -e "&fetch_main" -- --style notable,ul --dir $HTROOT/
+#   perl -w -M$i -e "&fetch_main" -- --style ul --dir $HTROOT/
+#   perl -w -M$i -e "&fetch_main" -- --style para --dir $HTROOT/
+done
+#wget -q -r -l1 -O $HTROOT/headlines.html http://www.hackernews.com/headlines.html 
+wget -q -r -l1 -O $HTROOT/lwn.html http://lwn.net/headlines/html 
+echo "<ul>" > /tmp/lwn$$
+while read i
+do
+   echo "<li> $i" >> /tmp/lwn$$
+done < $HTROOT/lwn.html
+echo "</ul>" >> /tmp/lwn$$
+cp /tmp/lwn$$ $HTROOT/lwn.html
+rm -f /tmp/lwn$$
+
+cd ..
+/usr/sco/bin/rput news/*.html

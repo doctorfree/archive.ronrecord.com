@@ -1,0 +1,15 @@
+- You can try the following command line options:
+	
+album \
+	-index index \
+	-medium 600x400 \ 
+	-theme /path/to/album/Themes/kde_style \ 
+	-columns 5 \
+	-no_crop \
+	-geometry=120x90
+
+but any other set of options would yield nice results too.
+
+ - This theme respects the -columns setting and handles well the -no_crop option.
+ - You can add HTML files besides images in any album and, if you want them to have your own special icon, replace icons/html.png
+ - icons2/ contains another set of (smaller) icons. If you like them more, you can overwrite the default ones or update album.th and image.th

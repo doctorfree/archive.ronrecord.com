@@ -1,0 +1,20 @@
+#!/bin/bash
+
+TOP=/home/doctorfree/src
+
+[ -d $TOP ] || mkdir -p $TOP
+
+cd $TOP
+
+[ "$1" = "-fetch" ] && {
+    rm -rf llmozlib2
+    svn co https://svn.secondlife.com/svn/llmozlib/trunk/llmozlib2/
+    cd llmozlib2
+    patch -b -p0 -i $TOP/llmozlib2-rr.patch
+}
+
+cd $TOP/llmozlib2/build_mozilla
+./linux-checkout_patch_build.sh
+cd ..
+./copy_products_linux.sh
+./build-linux-llmozlib.sh

@@ -1,0 +1,11 @@
+--- ./messagecomposer/messagefactory.cpp.00	2010-04-20 11:04:12.000000000 -0700
++++ ./messagecomposer/messagefactory.cpp	2010-04-20 11:07:14.000000000 -0700
+@@ -266,7 +266,7 @@
+ 
+   if( m_origMsg->hasHeader( QLatin1String("X-KMail-EncryptActionEnabled").latin1() ) &&
+         m_origMsg->headerByType( QLatin1String("X-KMail-EncryptActionEnabled").latin1() )->as7BitString() == "true" ) {
+-    msg->setHeader( new KMime::Headers::Generic( "X-KMail-EncryptActionEnabled", msg.get(), QLatin1String("true"), "utf-8" ) );
++    msg->setHeader( new KMime::Headers::Generic( "X-KMail-EncryptActionEnabled", msg.get(), (const QString&)QLatin1String("true"), (const QByteArray&)"utf-8" ) );
+   }
+ 
+   MessageReply reply;

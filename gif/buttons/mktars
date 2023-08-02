@@ -1,0 +1,37 @@
+rm *.tar
+rm *.tar.Z
+rm *.zip
+rm *~
+rm #*
+rm core
+cd ..
+mv gifs/*.ZIP .
+tar cf gifs.tar gifs
+zip -q -9 gifs.zip gifs/*
+echo Done gifs
+
+tar cf stanford.gifs.tar gifs/logo.* gifs/README gifs/convert-url gifs/buttonbars.html gifs/*.inc gifs/icons.html gifs/stanford.*
+zip -q -9 stangifs.zip gifs/logo.* gifs/README gifs/convert-url gifs/buttonbars.html gifs/*.inc gifs/icons.html gifs/stanford.*
+echo Done Stanford logos.
+
+tar cf lines.tar gifs/line.* gifs/line.html
+zip -q -9 lines gifs/line.* gifs/line.html
+echo Done Lines
+
+tar cf buttons.tar gifs/button.*
+zip buttons gifs/button.*
+echo Done Buttons
+
+compress gifs.tar
+compress stanford.gifs.tar
+compress lines.tar
+compress buttons.tar
+echo Compressed gifs.
+mv gifs.tar.Z gifs
+mv stanford.gifs.tar.Z gifs
+mv gifs.zip gifs
+mv stangifs.zip gifs
+mv lines.tar.Z lines.zip gifs
+mv buttons.tar.Z buttons.zip gifs
+mv *.ZIP gifs
+echo Moved.

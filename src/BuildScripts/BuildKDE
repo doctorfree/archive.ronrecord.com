@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# BuildKDE - written 19-Apr-2010 by Ronald Joe Record for use compiling the
+#            current subversion KDE on an Ubuntu Linux system
+#
+
+TOP=/home/doctorfree/src/kde
+PKGLIST_ALL="qt-copy kdesupport phonon-git kdelibs kdepimlibs kdebase \
+         kdeartwork kdemultimedia kdepim kdeutils kdegraphics kdegames \
+         kdetoys kdeedu kdenetwork kdeutils kdeadmin kdebindings \
+         extragear/multimedia extragear/graphics"
+PKGLIST_INI="qt-copy kdesupport phonon-git kdelibs kdepimlibs"
+
+PKGLIST="$PKGLIST_ALL"
+ECHO=
+REF=
+
+Usage() {
+    echo "Usage: BuildKDE [-i] [-p] [-r] [-n] [-u] [package list]"
+    echo -e "\tWhere -i indicates an initial package list"
+    echo -e "\t      -n indicates tell me what you would have done"
+    echo -e "\t      -p indicates refresh source and apply patches only"
+    echo -e "\t      -r indicates a refreshed build"
+    echo -e "\t      -u displays this usage message"
+    exit 1
+}
+
+Patches() {
+    [ -d $TOP/$1 ] && cd $TOP/$1
+    for j in $TOP/patches/$1/*.patch
+    do
+        [ "$j" = "$TOP/patches/$1/*.patch" ] && continue
+        $ECHO patch -p0 -b -z ".00" -i $j
+    done
+}
+
+while getopts inpru c
+do
+    case $c in
+    i) PKGLIST="$PKGLIST_INI"
+       ;;
+    n) ECHO=echo
+       ;;
+    p) REF="--refresh-build --no-build"
+       ;;
+    r) REF="--refresh-build"
+       ;;
+    u) Usage
+       ;;
+    esac
+done
+shift `expr $OPTIND - 1`
+
+[ $# = 0 ] || PKGLIST="$*"
+
+for pkg in $PKGLIST
+do
+    # Apply any patches for this package
+    Patches $pkg
+    $ECHO kdesvn-build $REF --no-install $pkg
+    [ $? -ne 0 ] && exit 1
+    echo $REF | grep no-build > /dev/null || {
+        $ECHO sudo kdesvn-build --install $pkg
+    }
+done

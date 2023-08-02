@@ -1,0 +1,78 @@
+#c// ####################################################################
+#c// Image Theme created by DaveSource.com
+#c// ####################################################################
+#c// 
+#c// and then ripped off by c.meyer to create this theme.. ;)
+#c// 
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title> 
+      Image: <:=Image_Name() :>
+    </title>
+    <: Meta() :>
+  </head>
+  <body bgcolor='white' text=#000000 link=#ff00ff vlink=#ff00ff>
+
+#c// #########################
+#c// Header/parents
+#c// #########################
+  <table width='95%'>
+    <tr>
+      <td align='left'>
+        <: pJoin_Parent_Albums(":"); :>
+      </td>
+      <td align='right'>
+        <a href=<:=Back():>>Back</a>
+      </td>
+    </tr>
+  </table>
+  <hr />
+
+#c// #########################
+#c// Prev/next thumbnails
+#c// #########################
+<table cellspacing='10' width='100%'>
+  <tr>
+    <td align='left'>
+      <: Set_Image_Prev(); :>
+      &lt;&lt;&nbsp;<a href=<:=Image_Page_URL():>><:=Image_Name():></a>
+    </td>
+    <td align='right'>
+      <: Set_Image_Next(); :>
+      <a href=<:=Image_Page_URL():>><:=Image_Name():></a>&nbsp;&gt;&gt;
+    </td>
+  </tr>
+</table>
+#c// Go back to the current image
+<: Set_Image_This(); :>
+
+#c// #########################
+#c// The image and caption
+#c// #########################
+<div align="center">
+  <table cellpadding="10" cellspacing="0" width="1%">
+   <tr><td bgcolor="black">
+    <a href=<:=Image_URL():>>
+    <:pImage_Src():></a><br />
+  </td></tr>
+  <tr><td align="center">
+    <font size='+1'><:=Image_Name() :></font>
+    <br />
+    <i><: pImage_Caption() :></i>
+  </td></tr>
+  </table>
+</div>
+
+#c// #########################
+#c// Footer
+#c// #########################
+<hr />
+    <font size='-1'>
+      <: Credit() :>
+      on <:=scalar localtime:>
+    </font>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Abstract, Dedication, and Introduction</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
+ALINK="#FF0000" BACKGROUND="/gif/bk.gif" 
+WIDTH=70 HEIGHT=64>
+<P>
+<B>ABSTRACT<!--Abstract--></B>
+<P>
+<B>THE METHOD OF CRITICAL CURVES FOR DISCRETE </B>
+<P>
+<B>DYNAMICAL SYSTEMS IN TWO DIMENSIONS</B>
+<P>
+<B>by</B>
+<P>
+<B>Ronald Joe Record</B>
+<P>
+The study of discrete dynamical systems has been primarily limited
+to maps of an interval of the line and/or diffeomorphisms<!--Diffeomorphism
+-->. A rigorous theory of the dynamics of noninvertible maps of
+the plane has only recently developed. Many of the analytical
+techniques and theory applied to diffeomorphisms<!--Diffeomorphism
+--> is either unavailable or limited in the context of two-dimensional
+endomorphisms of the plane. The method of critical curves provides
+researchers in this field with analytical and experimental tools.
+This work presents research in the study of noninvertible maps
+of the plane carried out by developing the method of critical
+curves and incorporating this theory in experimental digital simulations.
+<P>
+<B><A NAME="dedication"></A>DEDICATION AND ACKNOWLEDGMENTS<!--Dedication
+and Acknowledgements--></B>
+<P>
+I would like to dedicate this Doctoral dissertation to my father,
+Dr. Joe Neil Record. There is no doubt in my mind that without
+his continued support and counsel I could not have completed this
+process.
+<P>
+I would like to acknowledge the inspirational instruction and
+guidance of Dr. Ralph Abraham and the initial impetus to study
+Dynamical Systems Theory given me by Dr. John Guckenheimer. Both
+of these men have given me a deep appreciation and love for the
+beauty and detail of this subject.
+<P>
+I would also like to acknowledge the support and assistance given
+me by The Santa Cruz Operation and my co-workers there. SCO has
+been very generous in their support of my academic pursuits and
+many of my co-workers have contributed ideas, feedback and advice.
+Hiram Clawson, in particular, has assisted this research with
+his photographic and X11 expertise. Finally, I would like to thank
+my wife, Jodi, for her support and encouragement. I could not
+have completed this effort without her assistance, tolerance,
+and enthusiasm.
+<P>
+ The text of this dissertation includes reprints of the following
+previously published material :
+<P>
+Gardini, L., R. H. Abraham, R. J. Record, D. Fournier-Prunaret,
+[1994] &quot;A Double Logistic Map&quot;, <U>International Journal
+of Bifurcation and Chaos</U>, Vol. 4, No. 1, 145-176.
+<P>
+Abraham, R. H., G. Chichilnisky, R. J. Record, [1994] &quot;Dynamics
+of North-South Trade and the Environment&quot;, <U>Environmental
+Economics</U>, Graciela Chichilnisky, ed., Mattei Foundation,
+Milan, in press.
+<P>
+The co-author Dr. Ralph Abraham listed in these publications directed
+and supervised the research which forms the basis for the dissertation.
+<P>
+<B><A NAME="part1"></A><A NAME="introduction"></A></B>
+<P>
+<B>INTRODUCTION<!--Introduction--></B><!--Introduction-->
+<P>
+<B>Overview<!--Overview--></B><!--Overview-->
+<P>
+The method of <I>critical curves</I><!--Critical curvesintroduction
+--> has recently been employed in the analysis of discrete dynamical
+systems in the plane defined by noninvertible endomorphisms<!--Endomorphismintroduction
+-->. This work attempts to detail and illustrate the method of
+analysis developed and used by the author and colleagues by presenting
+the following :
+<P>
+ This introduction to the context and history of iterated maps.
+<P>
+ A published research paper analyzing an iterated coupled logistic
+map in the plane.
+<P>
+ A published chapter of a book analyzing an economic model incorporating
+an iterated map of the plane.
+<P>
+ The software developed by the author and used in the analyses
+above.
+<P>
+ A User's Guide to the software, <B>endo</B>, with chapters detailing
+the analytical and software methods.
+<P>
+<B>Endo</B> is a software laboratory designed for the analysis
+of discrete dynamical systems in two dimensions. The user is provided
+with several graphical representations of the dynamics including
+the point trajectories<!--Trajectoryview-->, basins of attraction,
+Lyapunov exponents, critical and precritical curves<!--Critical
+curvesview-->, and bifurcation<!--Bifurcation--> diagrams. <B>Endo
+</B> is designed to be highly interactive. Using the keyboard
+and mouse, the user can select from a menu containing a wide variety
+of maps, toggle analytical features, select specific areas for
+closer examination and interactively explore the dynamical properties
+of the planar endomorphism.
+<P>
+The name &quot;endo&quot; is short for &quot;endomorphism&quot;
+<!--Endomorphismintroduction-->, a noninvertible smooth map. The
+study of  the dynamics of these maps has generally been restricted
+to one dimension. This software attempts to utilize current developments
+in the theory of planar endomorphisms<!--Endomorphismintroduction
+-->, especially the theory of critical curves<!--Critical curvesintroduction
+--> and the role they can play in the dynamical analysis of such
+maps. <B>Endo</B> is an <B>X11</B> graphical client written in
+the <B>C</B> programming language. It has been compiled and run
+on a wide variety of platforms including Intel, Mips, Motorola,
+Sparc and RS6000 architectures.
+<P>
+<B>Context<!--Context--></B><!--Context-->
+<P>
+Dynamical systems theory has concerned itself with both continuous
+and discrete systems. In the case of continuous systems, the theory
+of <I>flows</I><B> </B><!--Flow-->is the study of actions of the
+real line on a manifold, generated by a vector field. The study
+of <I>cascades</I><B> </B><!--Cascade-->arose naturally from the
+study of flows when, at the turn of the century, Henri Poincar&eacute;
+<!--Poincar&eacute;--> used the <I>return map</I> <!--Return map
+-->of a cross-section of a flow. Cascades<!--Cascade--> are actions
+of the integers on a manifold, generated by a diffeomorphism<!--Diffeomorphism
+-->. The theories of flows and cascades<!--Cascade-->, initiated
+by Poincar&eacute;<!--Poincar&eacute;-->, has enjoyed a century
+of rich exploration and development. 
+<P>
+The third area of dynamical systems theory, that of <I>semi-cascades
+</I><!--Semi-cascade-->,<I> </I>are actions of the non-negative
+integers generated by a noninvertible endomorphism<!--Endomorphismsemi-cascade
+-->. The research presented in this paper concerns itself with
+the iteration of planar endomorphisms which are noninvertible.
+Many of these noninvertible endomorphisms arose in the study of
+population biology, ecology, economic systems and other natural
+phenomena. An example from the field of population dynamics is
+the density dependent Leslie matrix of Guckenheimer, Oster and
+Ipaktchi who explored the map . These efforts were an attempt
+to model predator-prey and host-parasitoid interaction. In these
+simple population biology models the iteration usually represented
+a strobed census of the population, typically at annual or generation
+length intervals.
+<P>
+ Iterated maps of the Complex plane as investigated by the pioneering
+French school of Poincar&eacute;, Picard, Montel, Fatou and Julia
+can also be thought of as iterated maps of the Real plane by a
+suitable transformation of coordinates. For instance, the function
+used in the calculation of the Mandelbrot set is  where z  is
+a  Complex variable and c is a  Complex parameter. Letting  and
+, the map is transformed into a map of  the Real plane into itself
+defined by , a function of two Real variables, x and y, and two
+Real parameters, a and b.
+<P>
+Often a physical or biological system will be modelled by a system
+of partial differential equations. The process of numerically
+investigating theses systems usually involves transforming the
+partial differential equations into ordinary differential equations
+and, in the nonlinear case, numerically integrating these using
+one of several popular techniques, all of which involve a discrete
+time increment. Thus, many mathematical models comprised of partial
+differential equations eventually are transformed into the discrete
+time and space domain of numerically integrated ordinary nonlinear
+differential equations. An excellent treatment of this phenomena
+is presented by Lorenz in 1989 in an investigation of  chaotic
+behavior induced by using difference equations as approximations
+to ODE's solved numerically with a large time increment .
+<P>
+<B>History<!--History--></B><!--History-->
+<P>
+Perhaps the most widely known use of iterated maps in the analysis
+of dynamical systems is the Poincar&eacute; return map. Henri
+Poincar&eacute; reduced the study of an autonomous differential
+equation of the 2nd order to the study of a transformation of
+the line into itself by interpreting the second order differential
+equation as a 1st order dynamical system in the plane and drawing
+a section across its trajectories. He also considered a transformation
+of a circle into itself defined by trajectories on a torus and
+their section. Poincar&eacute; generalized this method to dynamical
+systems in three dimensions where the reduced section is a surface
+and the return map a transformation of the plane into itself.
+The restricted problem of three bodies, reduced to three dimensions,
+was further reduced to a planar endomorphism by Poincar&eacute;.
+Investigating the invariant curves passing through a saddle point
+of a planar endomorphism, Henri Poincar&eacute; discovered the
+existence of homoclinic and heteroclinic (doubly-asymptotic) points.
+He described the figure obtained as an inextricable tangle of
+curves.
+<P>
+Examples of the use of iterated maps (or recurrence relations)
+throughout the history of mathematics abound. The Fibonacci sequence,
+Newton's method and the Naperian logarithm can or have been defined
+as recurrence relations. Fibonacci's sequence can be defined by
+the recurrence relation  with the initial conditions . Viewed
+as a map of the plane, it becomes  which has a unique fixed point
+at the origin. Calculating the eigenvalues, we see that  implies
+that  or , the Golden Mean and the opposite of its inverse. 
+<P>
+Newton's method for finding the roots of  involves the iteration
+of the recurrence relation . Hurwitz defined the Naperian logarithm
+of a number  by means of the recurrence relation  with solution
+. Thus, .
+<P>
+ The theory of semi-cascades<!--Semi-cascade--> is more recent
+than that of flows and cascades<!--Cascade--> and has mainly been
+studied for maps of the line.  A rigorous study in two dimensions
+dates only from the 1960s.  In 1964 Christian Mira<!--Mira-->
+introduced the method of critical curves<!--Critical curveshistory
+-->. One of the distinguishing features of a noninvertible endomorphism
+<!--Endomorphismcritical curves--> is the existence of these curves.
+The geometric theory of semi-cascades<!--Semi-cascade-->, as developed
+by Mira<!--Mira--> and his school, relies heavily on the analysis
+of the critical curves<!--Critical curveshistory-->.
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue3.gif" ALT="">
+<P><A HREF="../resume.pdf">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Back to Dr. Record's Resume</A> or proceed to
+<A HREF="chapter1.html">Chapter 1 of Dr. Record's Ph.D. Thesis
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

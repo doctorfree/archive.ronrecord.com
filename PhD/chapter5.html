@@ -1,0 +1,346 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>User's Guide - Chapter 5</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
+ALINK="#FF0000" BACKGROUND="/gif/bk.gif" 
+WIDTH=70 HEIGHT=64>
+<P>
+<B>Chapter 5  Algorithms and Theory<!--Chapter 5 - Algorithms
+and Theory--></B>
+<P>
+[Editor's Note: This chapter contained formatted equations which are
+in the process of being converted to in-lined GIF images]
+<P>
+<B>5.1 Technical Definitions<!--5.1 Technical Definitions--></B>
+<!--Definitions-->
+<P>
+ The point  is called the<B> <I>image</I></B> (or <I><B>consequent
+</B></I> or <I><B>forward iterate</B></I>) of <I><B>rank i</B>
+</I> of <I>p</I>.
+<P>
+ The <I><B>preimages of rank i</B></I><B> </B>of <I>p</I> are
+the points which are mapped into <I>p</I> after <I>i </I>applications
+of the map <I>T</I>.
+<P>
+ The <I><B>critical curve of rank 1</B></I><B> </B>of <I>T</I>,
+denoted as <I>LC</I>, is the locus of points having at least two
+coincident preimages of rank 1.
+<P>
+ A subset <I>A</I> of the plane is called <I><B>trapping</B></I>
+<B> </B>if it is mapped into itself by <I>T</I>, <I>T(A)A</I>
+; it is called <I><B>invariant</B></I> if <I>T(A)=A</I>, and 
+<I><B>backward invariant</B></I> if <I>(A)=A</I>
+<P>
+ An <I><B>absorbing area</B></I> <I>d'</I> is a closed subset
+of <I>R</I>2 bounded by a finite number of arcs of critical curves,
+which is trapping, <I>T(d')d'</I>, and for which a neighborhood
+exists, the points of which have an image of finite rank in the
+interior of <I>d</I>'.
+<P>
+ Its <I><B>basin of attraction</B></I><B> </B><I>D</I>(<I>d'</I>)
+is an open set of points having an image of finite rank in d'.
+<P>
+ An<B> <I>annular absorbing area</I> </B>is an absorbing area
+of annular shape, that is, a simply connected area deprived of
+the points of a hole in its interior.
+<P>
+ A <I><B>chaotic area</B></I><B> </B><I>d</I> is an invariant
+area of <I>d</I>', bounded by critical arcs or limit points of
+critical points, which contains a chaotic invariant set.
+<P>
+ A chaotic area <I>d</I> may be modified by a non-classical bifurcation,
+called a <I><B>contact bifurcation</B></I>, characterized by a
+contact between its boundary  and the boundary of its basin of
+attraction, the frontier <I>F</I>.
+<P>
+ A fixed point <I>P</I> of a map <I>T</I> is <I><B>expanding</B>
+</I> if  a neighborhood <I>U</I> of <I>P </I>such that all eigenvalues
+of <I>DT(p)</I> are greater than 1 in absolute value  <I>pU</I>.
+<P>
+ A point <I>q</I> is <I><B>homoclinic</B></I><B> </B>to <I>P</I>
+if  a positive integer <I>j</I> such that  and a sequence of preimages
+of <I>q </I>converges to <I>P</I>. <I>P</I> is a <I><B>snap-back
+repellor</B></I><B> </B>(<I>SBR</I>) if it is expanding and there
+exists a homoclinic point <I>q</I> of <I>P</I>.
+<P>
+<B>5.2 Properties<!--5.2 Properties--></B><!--Properties-->
+<UL>
+<LI>In general, an absorbing area <I>d</I>' can be determined
+with boundary  made up of a finite number of critical arcs belonging
+to the images of an arc, say  of . 
+<LI> continuously differentiable  <I>LC</I> is generally the image
+under <I>T</I> of  where  is the locus of points for which the
+Jacobian of <I>T</I> vanishes.
+<LI>The critical curve <I>LC</I> separates the plane into open
+regions. The points of each region possess the same number of
+distinct preimages of rank 1.
+<LI>Its <I><B>frontier</B></I><B> </B>(or boundary)  is backward
+invariant.
+<LI>If a fixed point <I>P</I> belonging to <I>d</I>' is expanding
+but is not an <I>SBR</I>, then an annular absorbing area <I>d'a
+ d'</I> can be obtained, with external and internal boundaries
+made up of a finite number of critical arcs belonging to the images
+of the arc  of .
+</UL>
+
+<P>
+
+<P>
+<B>5.3 Theory<!--5.3 Theory--></B><!--Theory-->
+<P>
+The critical curves are used to define the domains of the inverses
+of  T, determine the absorbing areas, and characterize the global
+bifurcations. In order to do so, the properties of critical curves
+and their iterates are used to develop a theory which characterizes
+bifurcations in terms of the interaction of thecritical curves
+with other geometric aspects of the dynamics such as the stable
+and unstable sets of a saddle, the boundary of a basin of attraction
+or the boundary of a chaotic area. Contacts between these and
+other objects are indicative of a wide variety of bifurcations.
+The procedures and algorithms used by <B>endo</B> are based on
+this theory and useful in its further development.
+<P>
+The algorithm for determining an absorbing area is based on the
+following procedure discovered by Mira. Let  be the point of intersection
+of  and  ,  its preimage of rank 1 belonging to  and  the image
+of rank i of . If  a positive integer m such that the critical
+arc  intersects , use procedure 2. Otherwise, use procedure 1.
+For instance, in the Dorband Double Logistic with , use procedure
+1. For , use procedure 2.
+<P>
+Procedure 1: Let  be a point of  such that  and a critical arc
+ intersects  at . Then the area  with boundary  is an absorbing
+area. 
+<P>
+Procedure 2: Let m be the first integer such that the critical
+arc  intersects  and let  be the intersection point furthest from
+. Then the area  with boundary  is an absorbing area.
+<P>
+<B>5.4 An Example<!--5.4 An Example--></B><!--Example-->
+<P>
+Consider the family of two dimensional maps <I>T: R</I>2<I>R</I>2,
+(<I>x,y</I>)(<I>x',y'</I>) as a function of a real parameter 
+defined by :
+<P>
+ . 
+<P>
+This &quot;double logistic&quot; map can be considered as a model
+for a coupled pair of oscillators. The fixed points of <I>T</I>
+and their local stability can be calculated by solving the equation
+ then calculating the eigenvalues at each fixed point. Varying
+the parameter , we divide the dynamical behavior into five &quot;regimes&quot;.
+For a complete treatment of this example, see Gardini, L., R.H.
+Abraham, R. J. Record, D. Fournier-Prunaret, [1994] &quot;A Double
+Logistic Map&quot;, <U>International Journal of Bifurcation and
+Chaos</U>, Vol. 4, No. 1, 145-176<B>.</B>
+<P>
+Behavior in the first regime, 0.0 &lt;  &lt; 0.2, is characterized
+by a simply connected basin of attraction. There are fixed points
+on the diagonal, , at the origin, O = (0,0) and S* = (3/4, 3/4).
+There are fixed points off the diagonal at =() and =(). The origin
+is a saddle for (0,0.4) and a repelling node for &gt;0.4 while
+S* is a saddle for (0,0.66...) and a repelling node for &gt;0.66...
+.   are attracting foci for (0,0.4) and repelling foci for &gt;0.4
+. The stable set of the origin, Ws(O), consists of two arcs connecting
+O and its &quot;alternate&quot; inverse O-1 .
+<P>
+In the second regime, 0.2 &lt;  &lt; 0.4, the basin of attraction
+is no longer simply connected but consists of an infinite number
+of simply connected components  . At =0.2 a global basin bifurcation
+occurs characterized by the contact of the critical curve  with
+the backward invariant sets <I>Ws(O)</I> and <I>Ws(S*).</I> <I>Z4
+</I> penetrates the basin of attraction <I>D. Ws(S*),</I> which
+determines <I>D</I>(), has a more complex structure, containing
+infinitely many arcs.
+<P>
+The third regime, 0.4 &lt;  &lt; *  0.70209, is initiated at =0.4
+with a flip bifurcation of the origin and a Neimark-Hopf bifurcation
+of the fixed points  and . The attracting foci each give rise
+to an attracting closed invariant curve i , i=1,2. The origin
+bifurcates from a saddle to a repelling node. A repelling 2-cycle
+saddle appears on the formerly attracting branch of the saddle
+at the origin. Construction of the absorbing area is now possible
+using the procedure developed by Mira and outlined above.
+<P>
+Inside the third regime at    0.487At 0.487 a critical arc  becomes
+tangent to and  an annular absorbing area (<I>AAA</I>) appears.
+While  is not a snap-back repellor,  a simply connected  absorbing
+area <I>d</I>' and a <I>AAA da'</I> with  =  and  =  where : {
+
+<P>
+At   = 1  0.48735 the invariant attracting curve  becomes tangent
+to  .  is deformed from a smooth oval  by the appearance of oscillations
+as a result of the &quot;folding&quot; of the portion of  above
+ . At   = 2  0.505 the invariant attracting curve  becomes tangent
+to <I>LC</I> (crossing  at the two points  and ). After the crossing
+ will be tangent to <I>LC</I> at two points separated by  . Contact
+between the chaotic attractor and its basin boundary at   0.64218
+produces a &quot;contact bifurcation&quot;.
+<P>
+ <I>S</I>*=(3/4, 3/4) bifurcates from a saddle to a repelling
+node at   = 0.66... . Along the diagonal , <I>S</I>* bifurcates
+from attracting to repelling while spawning a 2-cycle, <I>Q1-Q2
+</I>, attracting on  but repelling in the orthogonal direction
+(i.e. <I>Q1-Q2</I> is a 2-cycle saddle for T)
+<P>
+The fourth regime is the parameter interval *  0.70209    0.1
+. At =*an arc of the critical curve  on the boundary of the <I>AAA
+</I> becomes tangent to  at the periodic point <I>Q</I>1, causing
+the reunion of the two disjoint annular chaotic areas into a single
+connected chaotic area
+<P>
+The hole <I>H(S*)</I> disappears at the SBR bifurcation of <I>S*
+</I> occurring at  = s  0.714 .The two symmetric rank-1 preimages
+of <I>S*</I> outside  fall on the boundary of d' and thus on an
+arc of a critical curve. All the critical curves <I>LCi</I>, i3,
+pass through <I>S*.</I> Infinitely many homoclinic orbits of 
+<I>S*</I> exist and persist after the SBR bifurcation for all
+values of  &gt; s .
+<P>
+The SBR bifurcation of the fixed points  and  occurs at  = p 
+0.737 . After this bifurcation , the holes <I>H</I>() and <I>H
+</I>() disappear and the chaotic area d coincides with d' and
+is simply connected. This bifurcation is characterized by the
+critical curves ,  passing through the fixed points  and  .
+<P>
+At    0.7596 there is a pitchfork bifurcation of the 2-cycle saddle
+<I>R1-R2</I> which becomes a repelling node and spawns the appearance
+of a couple of 2-cycle saddles on the Frontier. There is also
+a pitchfork bifurcation of the 2-cycle saddle <I>Q1-Q2</I> on
+ which becomes an attracting node.
+<P>
+At 0.84 an 8-cycle undergoes a Neimark-Hopf bifurcation giving
+rise to 8 closed invariant curves. At 0.845 contact bifurcations
+produce a 4-cyclic annular chaotic area. At 0.852 an SBR bifurcation
+gives rise to a 4-cyclic chaotic area, not annular. At 0.854 a
+contact bifurcation between the 4 basins of attraction and the
+4-cyclic chaotic areas produces a single chaotic attractor in
+the absorbing area d'. This sequence is repeated for the attracting
+4-cycle  which occurs at =0.88 .
+<P>
+The SBR bifurcation of <I>S*</I> for occurs when the two critical
+curves  and  intersect  at the fixed point <I>S*</I> at   0.8928
+. Prior to this, all the points homoclinic to <I>S*</I> in <I>d
+</I>' were outside . After, there are points homoclinic to <I>S*
+</I> in .
+<P>
+The last contact bifurcation of <I>d'</I> occurs at =1.0, a homoclinic
+bifurcation in which the origin becomes an SBR. In this, the fifth
+regime,  for &gt;1.0, the point at infinity is the unique attractor.
+In the unit square there survives a Cantor set , invariant under
+<I>T</I>, with repelling cycles. That is,  is a &quot;strange
+repellor&quot;.
+<P>
+<B>5.5 An Application<!--5.5 An Application--></B><!--Application
+-->
+<P>
+In 1981 Graciela Chichilnisky introduced the North-South model
+of macroeconomic interaction between two regions. For a complete
+treatment of this application, see Abraham, R. H., G. Chichilnisky,
+R. J. Record, [1994] &quot;Dynamics of North-South Trade and the
+Environment&quot; in <U>Environmental Economics</U>, Graciela
+Chichilnisky, ed., Mattei Foundation, Milan (in press). In that
+paper, a dynamical model is developed, based on the idea of slowly
+changing the capital stock variable in the static model and assuming
+a rapid approach to equilibrium. Capital accumulation through
+time in each region is described by the equations :
+<P>
+ . 
+<P>
+That is, capital stock at time <I>t+1</I> is the sum of capital
+stock at time<I> t</I> plus savings minus depreciation. The North-South
+trade variables are as follows :
+<P>
+ <I>B </I>- basic goods
+<P>
+ <I>I </I>- industrial goods
+<P>
+ <I>K</I> - capital
+<P>
+ <I>L</I> - labor (later, labor is replaced by the environment,
+E)
+<P>
+  - price of basic goods
+<P>
+  - price of industrial goods
+<P>
+ <I>p</I> - price of basic goods as set by the international terms
+of trade after normalizing, =1
+<P>
+ <I>w</I> - price of labor (wages)
+<P>
+ <I>r </I>- rental of capital
+<P>
+  - property rights of a common resource property
+<P>
+ subscripts denote region (<I>N</I> or <I>S</I>)
+<P>
+ subscript <I>T</I> denotes total in both regions (e.g. )
+<P>
+ superscripts denote supply (<I>S</I>) and demand (<I>D</I>) (e.g.
+ denotes demand for basic goods in the South)
+<P>
+In the dynamical model, the common resource property rights in
+the South, , is varied. Additional parameters in the North-South
+model are held fixed at experimentally determined values which
+are chosen such that the variables <I>p, r, w, L, K, B, I</I>
+&gt; 0 in each region. The fixed parameter values used are shown
+in the following table.<HR>
+
+<PRE WIDTH=132>
+parameter               North               South             
+
+                        2                   4.5               
+
+                        0.15                0.02              
+
+                        1.8                 0.01              
+
+                        1.7                 3                 
+
+                        6                   75                
+
+                        -9.7                -0.025            
+
+                        12                  2.7               
+
+                        0.5                 -2                
+
+
+</PRE WIDTH=132>
+<HR>
+
+<P>
+In the North-South dynamical model the equilibrium level of GNP
+in each region is :
+<P>
+  .
+<P>
+ The planar endomorphism used is  
+<P>
+with :
+<P>
+ .
+<P>
+Once <I>p</I> is determined, the <I>GNP</I> is obtained from 
+. To determine <I>p</I>, solve the quadratic  
+<P>
+where :
+<P>
+ <BR>
+and <BR>
+ .
+<P>
+In simulations <I>s</I>=0.12, =0.1 and =0.6 .
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue3.gif" ALT="">
+<P><A HREF="../resume.pdf">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Back to Dr. Record's Resume</A> or proceed to
+<A HREF="appenda.html">Appendix A of Dr. Record's Ph.D. Thesis
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

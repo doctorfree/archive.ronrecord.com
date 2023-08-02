@@ -1,0 +1,120 @@
+#c// ####################################################################
+#c// Image Theme created by DaveSource.com
+#c// ####################################################################
+<:
+  # Path setting - this is the path to the images
+  $PATH = Theme_Path();
+:>//
+#c// ####################################################################
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title> 
+      Image: <:=Image_Name() :>
+    </title>
+    <: Meta() :>
+  </head>
+  <body bgcolor='black' text=#ffffff link=#0000ff vlink=#0000ff>
+
+#c// #########################
+#c// Header/parents
+#c// #########################
+  <table width='100%'>
+    <tr>
+      <td width='30%' valign='bottom' align='left'>
+        <h2>
+<:
+		# We only want the parent albums, not the current albums
+		while ($PARENT_ALBUM_CNT+1 <= $#PARENT_ALBUMS) {
+			pParent_Album();
+			Next_Parent_Album();
+			print ":" if ($PARENT_ALBUM_CNT+1 <= $#PARENT_ALBUMS);
+		}
+:>//
+	</h2>
+      </td>
+      <td align='center'>
+
+        <table border='0' cellpadding='0' cellspacing='0'>
+          <tr>
+            <td colspan='3' width='115' height='45'><img width='115' height='45' src='<:=$PATH:>/FilmCan.top.jpg'></td>
+          </tr>
+          <tr height='37'>
+            <td width='9' background='<:=$PATH:>/FilmCan.left.jpg'><br></td>
+            <td width='89' height='37' background='<:=$PATH:>/FilmCan.back.jpg' align='center'>
+              <font size=+1>
+		<: pParent_Album() :>
+              </font>
+            </td>
+            <td width='17' background='<:=$PATH:>/FilmCan.right.jpg'><br></td>
+          </tr>
+          <tr>
+            <td colspan='3' width='115' height='2'><img width='115' height='2' src='<:=$PATH:>/FilmCan.bot.jpg'></td>
+          </tr>
+        </table>
+      </td>
+      <td width='30%' valign='bottom' align='right'>
+        <h1><a href=<:=Back():>>Back</a></h1>
+      </td>
+    </tr>
+  </table>
+
+  <hr />
+
+#c// #########################
+#c// Prev, Image, Next
+#c// #########################
+<center>
+  <: Set_Image_Prev(); :>
+	<table border='0' cellpadding='0' cellspacing='0'>
+		<tr>
+			<td rowspan='3'><img height='<:=Get_Opt('y')+14:>' width='15' src='<:=$PATH:>/ThBord_L.gif'></td>
+			<td><img height='7' width='<:=Get_Opt('x'):>' src='<:=$PATH:>/ThBord_T.gif'></td>
+			<td rowspan='3'><img height='<:=Get_Opt('y')+14:>' width='15' src='<:=$PATH:>/ThBord_R.gif'></td>
+		</tr>
+		<tr>
+			<td><a href=<:=Image_Page_URL():>><:pImage_Thumb_Src():></td>
+		</tr>
+		<tr>
+			<td><img height='7' width='<:=Get_Opt('x'):>' src='<:=$PATH:>/ThBord_T.gif'></td>
+		</tr>
+	</table>
+
+<p>
+
+  <: Set_Image_This(); :>
+  <a href=<:=Image_URL():>>
+  <img border='0' src=<:=Image_Src():> alt=<:=Image_Alt():>></a><br />
+  <font size='+1'><i>
+    <: pImage_Caption() :>
+  </i></font>
+
+<p>
+
+  <: Set_Image_Next(); :>
+	<table border='0' cellpadding='0' cellspacing='0'>
+		<tr>
+			<td rowspan='3'><img height='<:=Get_Opt('y')+14:>' width='15' src='<:=$PATH:>/ThBord_L.gif'></td>
+			<td><img height='7' width='<:=Get_Opt('x'):>' src='<:=$PATH:>/ThBord_T.gif'></td>
+			<td rowspan='3'><img height='<:=Get_Opt('y')+14:>' width='15' src='<:=$PATH:>/ThBord_R.gif'></td>
+		</tr>
+		<tr>
+			<td><a href=<:=Image_Page_URL():>><:pImage_Thumb_Src():></td>
+		</tr>
+		<tr>
+			<td><img height='7' width='<:=Get_Opt('x'):>' src='<:=$PATH:>/ThBord_T.gif'></td>
+		</tr>
+	</table>
+</center>
+
+#c// #########################
+#c// Footer
+#c// #########################
+<hr />
+    <font size='-1'>
+      <: Credit() :>
+      on <:=scalar localtime:>
+    </font>
+  </body>
+</html>

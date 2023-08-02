@@ -1,0 +1,307 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>User's Guide - Chapter 2</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
+ALINK="#FF0000" BACKGROUND="/gif/bk.gif" 
+WIDTH=70 HEIGHT=64>
+<P>
+<A NAME="chapter2"></A>
+<P>
+<B>Chapter 2  Command Line Switches<!--Chapter 2 - Command Line
+SwitchesCommand line switches--></B>
+<P>
+<B>2.1 Man page, On-line help &amp; Usage<!--2.1 Man page, On-line
+help &amp; Usage--></B><!--Manual pageUsageOn-line help-->
+<P>
+<B>Endo</B> has a wide variety of command line arguments which
+are processed at startup and which determine the initial conditions,
+dynamics, properties viewed, and so on. No command line switches
+are necessary as <B>endo</B> contains default values for all of
+the properties that can be set on the command line. In addition,
+all of these properties and many more can be interactively controlled
+via the keyboard and mouse once <B>endo</B> is running. Chapter
+3 deals with interactive run-time control.
+<P>
+A terse summary of these command switches is provided in the UNIX-style
+manual page <B>endo.LOCAL</B> (installed in <B>/usr/local/man
+</B>). On-line help is also available at any time by pressing
+the '<B>?</B>' or '<B>h</B>' keys while <B>endo</B> is running.
+In addition, a brief usage message is displayed in the presence
+of an unknown argument or if &quot;<B>-u</B>&quot; is given on
+the command line. A more detailed explanation of the many command
+line switches is given here.
+<P>
+<B>2.2 Selecting the map<!--2.2 Selecting the map--></B><!--Mapselection
+-->
+<P>
+The distributed <B>endo</B> software package comes preconfigured
+with 29 different endomorphisms<!--Endomorphismselection--> of
+the plane. In order to select among these, you can either use
+the <B>-T</B> command line option or start <B>endo</B> with no
+options and choose a map from the menu. The syntax for specifying
+a map with the <B>-T</B> option is &quot;<B>-T #</B>&quot; where
+<B>#</B> represents a number between 0 and 28. For example, &quot;
+<B>endo -T 25</B>&quot; would select the MiraQuad map described
+below. Precise definitions of these maps are given in Appendix
+B. There is no default map. A map must be specified either on
+the command line or by selecting one from the map menu.
+<P>
+<B>2.3 Specifying parameter values<!--2.3 Specifying parameter
+values--></B>
+<P>
+<B>Endo</B> supports up to 24 distinct parameters. Most of the
+predefined maps listed in Appendix B contain only 2 or 3 parameters.
+You can specify parameter values on the <B>endo</B> command line
+via the switches &quot;<B>-ABCDEFGIJKLMabcdefgijklm value</B>&quot;.
+That is, to specify a value of 2.3 for the second parameter you
+would pass the argument &quot;<B>-B 2.3</B>&quot;. To specify
+the use of the MiraQuad map with parameter values 0.7 and -0.9
+respectively, the command would be &quot;<B>endo -T 25 -A 0.7
+-B -0.9</B>&quot;. To determine the  default parameter values
+for a map, consult Appendix C.
+<P>
+<B>2.4 Selecting the dynamical view<!--2.4 Selecting the dynamical
+view--></B><!--View selection-->
+<P>
+When investigating a particular map<!--Mapview--> it is sometimes
+desirable to fix parameter values and vary initial conditions
+while at other times it may be necessary to fix initial conditions
+and vary parameter values. It may also be helpful to display critical
+curves<!--Critical curvesview-->, critical arcs, precritical curves,
+point trajectories<!--Trajectoryview--> and other information.
+All of these can be specified on the command line.
+<P>
+In order to fix parameter values and vary initial conditions,
+use the &quot;<B>-8 0</B>&quot; option. To vary parameter values
+while fixing an initial condition, use &quot;<B>-Q m n</B>&quot;
+where <B>m</B> and <B>n</B> represent parameter numbers. For instance,
+to vary parameters 2 and 3 in the Leslie Matrix, use &quot;<B>-T
+2 -Q 2 3</B>&quot;. The first parameter listed is used as the
+x-axis and the second as the y-axis. The default view is to vary
+parameter values and fix an initial condition. The default parameters
+to vary are &quot;<B>-Q 0 1</B>&quot;.
+<P>
+There are a number of ways to combine the <B>-8</B> and <B>-9
+</B> switches to present various aspects of the dynamics. The
+<B>-8</B> switch can be followed by <B>0, 1, 2, 3, </B>or <B>4
+</B> specifying the following :
+<P>
+<B>-8 0 </B>displays the basins of attraction 
+<P>
+<B>-8 1 </B>bifurcation<!--Bifurcation--> diagrams only
+<P>
+<B>-8 2</B> bifurcation diagrams and Lyapunov sets
+<P>
+<B>-8 3</B> same as <B>2</B> with initial condition taken as last
+point calculated on the attractor
+<P>
+<B>-8 4</B> same as <B>2</B> with initial condition on critical
+curve<!--Critical curves--><B>-8 4</B><!-- switch-->
+<P>
+The <B>-9</B> switch can be followed by a <B>0, 1, 2, 3, </B>or
+<B>4 </B>as follows :
+<P>
+<B>-9 0 </B>no Mandelbrot sets displayed
+<P>
+<B>-9 1 </B>display Lyapunov exponents in the Mandelbrot set
+<P>
+<B>-9 2</B> display the Mandelbrot set in black
+<P>
+<B>-9 3</B> display the rate of attraction of a critical point
+<P>
+<B>-9 4</B> use the reserved portion of the palette for display
+of the Mandelbrot set
+<P>
+ Fixing parameter values and varying initial conditions produces
+a graphical display of a portion of the basins of attraction.
+Fixing initial conditions and varying parameter values produces
+a graphical representation of the Lyapunov exponents which vary
+as the parameter values vary. In either case, a graphical representation
+of the point trajectories<!--Trajectory--><B>-p</B><!-- switch
+--> will also be displayed unless the &quot;<B>-p</B>&quot; option
+has been specified.
+<P>
+If in addition to the basins of attraction you wish to view the
+critical curves<!--Critical curves--><B>-P </B><!--switch-->,
+use the &quot;<B>-P 1</B>&quot; switch. The <B>-P</B> switch acts
+as follows :
+<P>
+<B>-P 1</B> display critical curves<!--Critical curves--><B>-P
+</B><!--switch--> only
+<P>
+<B>-P 2</B> display critical and precritical curves<!--Critical
+curves--><B>-P </B><!--switch-->
+<P>
+<B>-P 3 </B>display precritical curves only
+<P>
+<B>-P 4</B> display pre-images of the diagonal only
+<P>
+<B>-P 5</B> indicates the existence of two attractors separated
+by the diagonal
+<P>
+<B>-P 6</B> display pre-images of the origin only
+<P>
+<B>-P 7</B> display pre-images of the diagonal and origin
+<P>
+<B>-P 8 </B>display pre-images of critical curves and origin
+<P>
+<B>-P 9</B> indicates the existence of two attractors separated
+by the y-axis
+<P>
+<B>-P 10</B> indicates the existence of two attractors separated
+by the x-axis
+<P>
+<B>-P 11</B> use distance from origin for color indicator
+<P>
+<B>-P 12</B> use angle with x-axis as color indicator
+<P>
+<B>-P 13</B> indicates the existence of an attractor in each quadrant
+of the plane
+<P>
+<B>2.5 Specifying initial conditions, settle and dwell<!--2.5
+Specifying initial conditions, settle and dwell--></B>
+<P>
+In order to iterate a point in the plane, it's necessary to know
+the coordinates of the point, the map used (including parameter
+values) and the number of iterates desired. <B>Endo</B> uses two
+integers, referred to as the <I>settle</I><!--Settle--> and <I>dwell
+</I>, to determine the number of iterates. A point is iterated
+for settle + dwell<!--Dwell--> iterations through the map. For
+the first settle iterations, no points are plotted. After allowing
+this &quot;passing of transients&quot;, the subsequent dwell number
+of iterates are plotted. To specify the settle and dwell on the
+command line, use the &quot;<B>-S #</B>&quot; and &quot;<B>-n
+#</B>&quot; arguments to <B>endo</B>. The default settle and dwell
+is set to 256 each.
+<P>
+ When varying the parameter values and fixing the initial conditions,
+to specify the coordinates of the point to iterate, use the &quot;
+<B>-X x-value -Y v-value</B>&quot; switches to iterate the point
+<B>(x-value, y-value)</B>. An argument of <B>-R</B> will cause
+random initial conditions to be generated.
+<P>
+When fixing the parameter values and varying the initial conditions,
+use the following  :
+<P>
+<B>-x xval1 , xval2 , xval3</B>
+<P>
+<B>-y yval1 , yval2 , yval3</B>
+<P>
+<B>-w wval1 , wval2 , wval3</B>
+<P>
+<B>-h hval1 , hval2 , hval3</B>
+<P>
+This will specify a rectangular domain of iteration with lower
+left corner at <B>(xval1, yval1)</B> and upper right corner at
+<B>(xval1 + wval1, yval1 + hval1)</B>. <B>Endo</B> will traverse
+this rectangular subset of the plane, iterating each of the points
+in a grid. The grid size is determined by the size of the window
+(see <B>-W</B> and <B>-H</B> below).
+<P>
+The optional arguments above will be used to set the rectangular
+boundaries for the point trajectory<!--Trajectory--><B>-x, -y,
+-w, -h </B><!--switches--> and critical curve<!--Critical curves
+--><B>-x, -y, -w, -h </B><!--switches--> windows respectively.
+For instance, it may be useful to iterate the box <B>(0, 1) x
+(1, 3)</B> while viewing the trajectory phase space <B>(0.25,
+0.35) x (0.1, 0.4)</B>. Providing command-line arguments of &quot;
+<B>-x 0 , 0.25 -y 1 , 0.1 -w 1 , 0.1 -h 2 , 0.3</B>&quot; would
+accomplish this.
+<P>
+Consult Appendix D to determine the default initial conditions
+for a particular map.
+<P>
+<B>2.6 Setting window properties<!--2.6 Setting window properties
+--></B>
+<P>
+<B>Endo</B> contains 16 color palettes which were found to be
+useful in displaying various aspects of the graphical representation
+of the dynamics. In addition to these built in palettes, <B>endo
+</B> will read a user defined palette in the file $HOME/.endomap.
+In order to specify which color palette is installed, use the
+&quot;<B>-numwheel #</B>&quot; argument on the command line. By
+default, <B>endo</B> uses color palette 15 (a rainbow palette).
+The user defined palette is palette number 0.
+<P>
+The size of the windows can be specified on the command line with
+the &quot;<B>-W # , # , #&quot; and &quot;-H # , # , #&quot; switches.
+The first number indicates the width or height of the basin or
+Lyapunov window. The second (optional) number indicates the width
+or height of the trajectory</B><!--Trajectory--><B>-W, -H </B>
+<!--switches--> window. The third (optional) number indicates
+the width or height of the critical curve<!--Critical curves-->
+<B>-W, -H </B><!--switches--> window.
+<P>
+A &quot;<B>-+</B>&quot; argument causes an overlay plot of the
+axes. An argument of &quot;<B>-0</B>&quot; indicates to run in
+demo mode. Arguments of &quot;<B>-1</B>&quot;, &quot;<B>-2</B>&quot;,
+&quot;<B>-3</B>&quot; or &quot;<B>-4</B>&quot; indicate display
+of the <B>y</B> bifurcation<!--Bifurcation--> diagram, both bifurcation
+diagrams, 3-D mode, and display of the <B>x</B> bifurcation diagram
+respectively. An argument of &quot;<B>-6</B>&quot; puts the display
+into animation mode, erasing the previous image prior to drawing.
+A color histogram of the trajectory<!--Trajectory--><B>-7 </B>
+<!--switch--> will be displayed if the &quot;<B>-7</B>&quot; switch
+is given.
+<P>
+An escape radius can be specified with the &quot;-<B>r rval</B>&quot;
+switch. This radius will only be used if the &quot;Mandelbrot
+mode&quot; has been selected via &quot;<B>-9 #</B>&quot; where
+<B>#</B> is 1, 2 or 3. When in Mandelbrot mode, once a trajectory
+<!--Trajectory--><B>-9 </B><!--switch--> has exceeded the escape
+radius the iteration is stopped and the point is given a color
+index from a distinctly different palette.
+<P>
+<B>2.7 Detecting periodic trajectories<!--2.7 Detecting periodic
+trajectories--></B>
+<P>
+In order to turn on periodic<!--Trajectoryperiodic--> orbit<!--Orbitsee
+trajectory--> detection, use the &quot;<B>-V</B>&quot; argument.
+This &quot;periodicity&quot; detection is really &quot;near return&quot;
+detection. To specify the proximity within which an orbit can
+return before it is classified as periodic, use the &quot;<B>-t
+&quot;</B> option. If any iterate falls inside a square of size 2
+x 2 centered at a previous iterate, it is classified as periodic.
+The default value of  is 0.05.
+<P>
+<B>2.8 Determinant of the Jacobian<!--2.8 Determinant of the Jacobian
+--></B><!--Jacobian-->
+<P>
+<B>Endo</B> uses the determinant of the Jacobian<!--Jacobian-->
+of the map<!--MapJacobian--> at a point to calculate the critical
+curves<!--Critical curvescalculation--> and Lyapunov exponents.
+Each map in the distributed version of <B>endo</B> has the Jacobian
+<!--Jacobian--> previously calculated in closed form. However,
+if a new map is added for which the Jacobian is either unknown
+or difficult to calculate, the &quot;<B>-numeric</B>&quot; option
+can be used. This option causes <B>endo</B> to numerically approximate
+the Jacobian<!--Jacobian-->. The value of  above is used to select
+points &quot;close&quot; to the point in question.
+<P>
+Another &quot;small&quot; real value, , is used to locate the
+critical curves<!--Critical curvescalculation-->. If the absolute
+value of the determinant of the Jacobian<!--Jacobian--> is less
+than , the point is said to lie on the critical curve<!--Critical
+curvescalculation-->. The value of  can be specified via the &quot;
+<B>-z &quot;</B> argument. The default value of  is 0.05.
+<P>
+<B>2.9 Saving a window to a file<!--2.9 Saving a window to a file
+--></B><!--Saving to a file-->
+<P>
+Each of the five main <B>endo</B> windows may be saved to a file
+in Portable Pixmap format (PPM). On a monochrome system, the savefile
+format is Portable Bitmap (PBM). To specify the filename to save
+to, use the &quot;<B>-o filename</B>&quot; argument. The default
+filename to use when saving is &quot;endo.out&quot;.
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue3.gif" ALT="">
+<P><A HREF="../resume.pdf">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Back to Dr. Record's Resume</A> or proceed to
+<A HREF="chapter3.html">Chapter 3 of Dr. Record's Ph.D. Thesis
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

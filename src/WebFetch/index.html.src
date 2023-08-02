@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>welcome to my news fetching page</title>
+  </head>
+
+  <body marginwidth="0" marginheight="0" leftmargin="0" rightmargin="0"
+        topmargin="0" bgcolor="#BBDDFF" text="#000000" link="#336699"
+	vlink="#336699" alink="#336699">
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="3">
+<TH COLSPAN=2>
+<!--#include file="fetch_time.html" -->
+</TH>
+
+<TR>
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+Slashdot</B>
+<A HREF=http://slashdot.org>(http://slashdot.org)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+<!--#include file="slashdot.html" -->
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<P>
+</TD>
+
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+Freshmeat</B>
+<A HREF=http://freshmeat.net>(http://freshmeat.net)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+<!--#include file="freshmeat.html" -->
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<P>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+Linux Today</B>
+<A HREF=http://linuxtoday.com>(http://linuxtoday.com)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+<!--#include file="linuxtoday.html" -->
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<P>
+</TD>
+
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+LWN</B>
+<A HREF=http://lwn.net>(http://lwn.net)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+<!--#include file="lwn.html" -->
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<P>
+</TD>
+</TR>
+
+<TR>
+<TD COLSPAN=2 ALIGN=CENTER>
+<!--#include file="sites.html" -->
+</TD>
+</TR>
+<TR>
+<TH COLSPAN=2>Generated using 
+<A HREF=http://www.webfetch.org/>WebFetch</A>
+and <A HREF=http://sunsite.dk/wget/>GNU Wget</A>
+</TH>
+</TR>
+<TR>
+<TH COLSPAN=2>
+The 
+<A HREF=/src/WebFetch/>webfetch script</A> 
+and 
+<A HREF=/src/WebFetch/>index.html</A> 
+written by
+<A HREF=/>Ronald Joe Record</A>
+</TH>
+</TR>
+<TR>
+<TH COLSPAN=2>
+<A HREF=/src/WebFetch/>Crontab entry </A>
+taken from notes by <A HREF=mailto:brianc@magicnet.net>Brian Coyle</A>
+in his
+<A HREF=http://www.magicnet.net/~brianc/ultra-tiny-HOWTOs/dynamic_home_page>
+HOWTO</A>
+</TH>
+</TR>
+</TABLE>
+
+<!-- These aren't fetching correctly yet
+
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+CNET</B>
+<A HREF=http://www.cnet.com>(http://www.cnet.com)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+include file="cnet.html" 
+</FONT>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+CNN</B>
+<A HREF=http://www.cnn.com>(http://www.cnn.com)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+include file="cnnsearch.html" 
+</FONT>
+</TD>
+</TR>
+</TABLE>
+</TD>
+
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+COLA</B>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+include file="cola.html" 
+</FONT>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=50% VALIGN=TOP ALIGN=CENTER>
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+Yahoo Biz</B>
+<A HREF=http://www.yahoo.com>(http://www.yahoo.com)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+include file="yahoo_biz.html" 
+</FONT>
+</TD>
+</TR>
+</TABLE>
+
+End of incorrectly fetching sites
+
+Start of don't get these yet sites
+
+<TABLE WIDTH="80%" BORDER="1" CELLSPACING="1" CELLPADDING="3">
+<TR>
+<TD VALIGN=top ALIGN="center" BGCOLOR="#EEEEEE">
+<B>
+Debian</B>
+<A HREF=http://www.debian.org>(http://www.debian.org)</A>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF">
+<FONT SIZE=-1>
+include file="debiannews.html"
+</FONT>
+</TD>
+</TR>
+</TABLE>
+<P>
+
+End of don't get these yet sites
+-->
+</BODY>
+</HTML>

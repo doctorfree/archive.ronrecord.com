@@ -1,0 +1,45 @@
+#!/bin/bash
+
+TOP=/home/doctorfree/src
+VER=1.23.5.1633
+#SVN_TRUNK=svn/linden/projects/2010/snowglobe/trunk
+
+[ -d $TOP ] || mkdir -p $TOP
+
+cd $TOP
+
+#[ "$1" = "-fetch" ] &&  {
+#    rm -rf trunk
+#    svn co http://svn.secondlife.com/$SVN_TRUNK
+#    ./trunk/scripts/public_fetch_tarballs.py
+#    exit 0
+#}
+
+[ "$1" = "-extract" ] &&  {
+    rm -rf emerald
+    7z x Emerald_${VER}_source.7z
+}
+
+# Apply any local patches
+#cd $TOP/emerald/
+#patch -b -N -p0 -i ../patches/PulseAudio.patch
+#patch -b -N -p1 -i ../patches/tut-standalone.patch
+[ "$1" = "-patch" ] && exit 0
+
+cd $TOP/emerald/indra/
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DUNATTENDED:BOOl=FALSE -DSTANDALONE:BOOL=FALSE \
+      -DCMAKE_BUILD_TYPE:STRING=Release-DSERVER:BOOL=FALSE \
+      -DVIEWER:BOOL=TRUE -DMOZLIB:BOOL=true -DINSTALL:BOOL=TRUE \
+      -DAPP_SHARE_DIR:STRING=/usr/share/omvviewer/ \
+      -DAPP_BINARY_DIR:STRING=/usr/games/ \
+      -DCMAKE_INSTALL_PREFIX:STRING=debian/ \
+      -DBINARY_NAME:STRING=omvviewer \
+      -DOPENAL:BOOL=TRUE .
+
+[ "$1" = "-cmake" ] && exit 0
+
+#cd $TOP/trunk/indra/viewer-linux-i686-relwithdebinfo
+make
+
+echo "Emerald binary archive should be in linden/indra/viewer-linux-i686-*/newview/"

@@ -1,0 +1,25 @@
+:
+# convert-url
+#
+
+if [ "$1 " = " " ] 
+then
+	echo This little csh script converts the /gifs/
+	echo references in the HTML files to your site name
+	echo Please pass the pathname you want to replace it with
+	echo as a command line parameter.
+	echo \ 
+	echo e.g. \	\	   $0 /images/
+	echo \ 
+	echo NOTE: The leading and trailing slash ARE VERY IMPORTANT!
+	exit
+fi
+
+echo Converting /gifs/ to /usr/skunk/pics/gif/buttons
+for abc in  *.html  
+do
+	echo Converting $abc
+	sed -e 's/\/gifs\//\/usr\/skunk\/pics\/gif\/buttons\//p' < $abc > new
+	mv new $abc
+done
+echo Done.  Thank you for reducing the load on the PCD server.

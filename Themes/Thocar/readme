@@ -1,0 +1,24 @@
+Here were my goals when designing this theme :
+
+- Take advantage of CSS (and DOM soon) for better navigation, visualation and code maintenance
+- Produce valuable additionnal technical value so that grahpic designers would derive their theme from this one
+- Have a dark background to emphasize the photos
+- Have a french theme easily translable (most of current theme are not easy to translate)
+
+Goal not yet achieved
+- add a -style option to pass a derived stylesheet so that the user doesn't need to write a theme to change some parts of the look (like background, font, ...)
+
+This theme was written on SuSE/Linux using :
+- mozilla
+- vim
+- gimp
+- GQview
+
+This theme is optimized for browsers that support w3c standards (CSS).
+
+According to me they come in that order (from best to worst) :
+- Mozilla 1.3
+- Konqueror 3.0.1
+- Opera 6
+- IE 5.5
+- Nestcape 4.7

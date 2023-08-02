@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TOP=/home/doctorfree/src/snowglobe
+SVN_TRUNK=svn/linden/projects/2010/snowglobe/trunk
+
+[ -d $TOP ] || mkdir -p $TOP
+
+cd $TOP
+rm -rf trunk
+
+svn co http://svn.secondlife.com/$SVN_TRUNK
+
+./trunk/scripts/public_fetch_tarballs.py
+

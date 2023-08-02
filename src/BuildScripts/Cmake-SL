@@ -1,0 +1,425 @@
+#!/bin/bash
+
+# cmake-SL v1.31 (c)2008-2009 Henri Beauchamp. Released under GPL license v2:
+# http://www.gnu.org/licenses/gpl.txt
+
+###############################################################################
+######## THIS IS QUICK'N DIRTY ALPHA SOFTWARE. USE AT YOUR OWN RISKS ! ########
+###############################################################################
+
+###############################################################################
+# BEWARE: this script is meant to compile a -personal- SL client. It is -NOT- #
+#         suitable to build client versions meant for public release, because #
+#         non-open source code is packaged by this script.                    #
+###############################################################################
+
+# This bash script is aimed at easying up the build process of a SL client
+# with cmake.
+# You may enable or disable the use of your system's library by editing
+# the USE_SYSTEM_* variable ("yes" --> use the system library, "no" --> use
+# LL's provided ones).
+# The script also takes care of updating properly the viewer_manifest.py script
+# accordingly, so that you (should) end up with a properly packaged client.
+
+# To use this script, simply make it executable (chmod +x cmake-SL) and
+# put it into /usr/local/bin (or any other directory in your PATH).
+# Then, download the slviewer-src-*.tar.gz, slviewer-linux-libs-*.tar.gz,
+# slviewer-artwork-*.zip and fmodapi*.tar.gz archives, and finally, invoke
+# make-SL as follow:
+#   cmake-SL path_to_archives  (example: make-SL ~/downloads)
+# or simply:
+#   cmake-SL
+# when invoking from the directory where the archives are.
+# The sources will be installed into the PATH_TO_SOURCES directory,
+# and the client will be built into the TEMP_DIR directory.
+# The packaged build will be moved to your home directory.
+#
+# If you want to retry a compilation after fixing something manually and
+# don't want cmake-SL to start all over again, overwriting everything,
+# you may invoke it with the --retry option, like this:
+#   cmake-SL --retry
+#
+# Finally, if you just want to prepare the sources without starting the
+# compilation, use:
+#   cmake-SL [path_to_archives] --prep
+#
+# This script has been tested by the author, on (very customized)
+# Mandriva 2007.1 and 2009.0 distros.
+# Tested with SL v1.21 and v1.22 sources.
+
+# Where the sources of the client will be held (defaults to "./linden"):
+PATH_TO_SOURCES="/home/doctorfree/src/snowglobe"
+# Where to store temporary files:
+TEMP_DIR="/tmp/$USER"
+
+USE_SYSTEM_GTK="yes"
+USE_SYSTEM_SDL="yes"
+USE_SYSTEM_SSL="yes"
+# Beware: libdb4 makes use of libapr, libapr makes use of libexpat and
+# libxmlrc-epi makes use of libexpat... so you should keep USE_SYSTEM_APR,
+# USE_SYSTEM_DB4, USE_SYSTEM_EXPAT and USE_SYSTEM_XMLRPC in sync.
+USE_SYSTEM_APR="yes"
+USE_SYSTEM_EXPAT="yes"
+USE_SYSTEM_XMLRPC="yes"
+# Note: you may specify a version number (example: 4.6) instead of "yes"
+# in USE_SYSTEM_DB4 (by default the cmake scripts will attempt to link
+# against DB4.2 only and would fail when set to "yes" if this is not the
+# version installed on your system.
+USE_SYSTEM_DB4="4.7"
+# You should keep the USE_SYSTEM_CARES setting in sync with the USE_SYSTEM_CURL
+# setting further below...
+USE_SYSTEM_CARES="yes"
+# If your system libcurl does not use c-ares (non-blocking DNS calls), better
+# using LL's provided library...
+USE_SYSTEM_CURL="yes"
+USE_SYSTEM_OGG="yes"
+USE_SYSTEM_ZLIB="yes"
+USE_SYSTEM_UUID="yes"
+USE_SYSTEM_VORBIS="yes"
+USE_SYSTEM_JPEGLIB="yes"
+USE_SYSTEM_PERFTOOLS="yes"
+USE_SYSTEM_ELFIO="yes"
+# When compiling against anything newer than glibc v2.4, do use "yes" here:
+USE_SYSTEM_LIBSTDC="yes"
+
+# You may add tune flags here, to optimize the code for your processor.
+# Example, for an Athlon XP:
+# TUNE_FLAGS="-march=athlon-xp"
+TUNE_FLAGS="-fomit-frame-pointer -frename-registers -ftree-vectorize -fweb -fexpensive-optimizations -march=i686 -msse -mfpmath=sse"
+# Set this to "yes" to force vectorization use in the viewer code (only for
+# processors with SSE or Altivec units, and only if you did enable them via
+# the TUNE_FLAGS.
+FORCE_VECTORIZE="yes"
+
+# When using gcc v4.3 or later, you might have to set this to yes...
+ALLOW_WARNINGS="yes"
+
+########### functions definitions ###########
+
+function check() {
+    if [ "$1" != "no" ] ; then
+        if [ -f $2 ] ; then
+            echo "Using the system $3..."
+            return 0
+        else
+            echo "WARNING: system $3 requested but not available..."
+        fi
+    fi
+    return 1
+}
+
+function update_manifest() {
+    grep -v $1 $PATH_TO_SOURCES/indra/newview/viewer_manifest.py >$TEMP_DIR/viewer_manifest.py
+    mv -f $TEMP_DIR/viewer_manifest.py $PATH_TO_SOURCES/indra/newview/viewer_manifest.py
+    chmod +x $PATH_TO_SOURCES/indra/newview/viewer_manifest.py
+}
+
+function compile() {
+    cd $PATH_TO_SOURCES/indra
+    echo "Compiling the client into $TEMP_DIR..."
+    ./develop.py --type=Release build
+    if (($? == 0)) ; then
+        mv -f $PATH_TO_SOURCES/indra/viewer-linux-i686*/newview/SecondLife*.tar.bz2 $HOME/
+    fi
+}
+
+########### end of functions ###########
+
+if [ "$TEMP_DIR" == "" ] ; then
+    export TEMP_DIR="/usr/tmp/$USER"
+fi
+
+# Check to see if we simply want to retry a compilation:
+if [ "$1" == "--retry" ] ; then
+    compile
+    exit $?
+fi
+
+# Make sure we don't unpack over an old source tree:
+if [ -d linden ] ; then
+    rm -rf linden/
+fi
+
+if [ -d $PATH_TO_SOURCES ] && [ "$PATH_TO_SOURCES" != "" ] && [ "$PATH_TO_SOURCES" != "/" ] && [ "$PATH_TO_SOURCES" != "." ] && [ "$PATH_TO_SOURCES" != ".." ] && [ "$PATH_TO_SOURCES" != "$HOME" ] ; then
+    rm -rf $PATH_TO_SOURCES/
+fi
+
+# Use the parameter (if any) as the path to the archives:
+
+PATH_TO_ARCHIVES=`pwd`
+if [ "$1" != "" ] && [ "$1" != "--prep" ] ; then
+    if [ -d $1 ] ; then
+        PATH_TO_ARCHIVES=$1
+        shift
+    fi
+fi
+
+# Let's first unpack everything:
+if ! [ -f $PATH_TO_ARCHIVES/slviewer-src-*.tar.gz ] ; then
+    echo "You need slviewer-src !"
+    exit 1
+fi
+if ! [ -f $PATH_TO_ARCHIVES/slviewer-linux-libs-*.tar.gz ] ; then
+    echo "You need slviewer-linux-libs !"
+    exit 1
+fi
+if ! [ -f $PATH_TO_ARCHIVES/slviewer-artwork-*.zip ] ; then
+    echo "You need slviewer-artwork !"
+    exit 1
+fi
+if ! [ -f $PATH_TO_ARCHIVES/fmodapi*.tar.gz ] ; then
+    echo "You need fmodapi !"
+    exit 1
+fi
+echo "Extracting the files from the archives..."
+tar xzf $PATH_TO_ARCHIVES/slviewer-src-*.tar.gz
+tar xzf $PATH_TO_ARCHIVES/slviewer-linux-libs-*.tar.gz
+unzip -o $PATH_TO_ARCHIVES/slviewer-artwork-*.zip >/dev/null
+# You may add artwork patches named in the form:
+# slviewer-whatever-artwork-patch.zip
+# Example: slviewer-v11900-statusbar-artwork-patch.zip
+ARTWORK_PATCHES=`/bin/ls $PATH_TO_ARCHIVES/slviewer-*-artwork-patch.zip`
+if [ "$ARTWORK_PATCHES" != "" ] ; then
+    for f in $ARTWORK_PATCHES; do
+        echo "Extracting artwork patch $f..."
+        unzip -o $f >/dev/null
+    done
+fi
+
+# fmodapi:
+echo "Copying fmodapi files..."
+tar xzf $PATH_TO_ARCHIVES/fmodapi*.tar.gz
+mkdir -p linden/libraries/include/
+mkdir -p linden/libraries/i686-linux/lib_debug/
+mkdir -p linden/libraries/i686-linux/lib_release/
+mkdir -p linden/libraries/i686-linux/lib_release_client/
+cp -a fmodapi*/api/inc/* linden/libraries/include/
+cp -a fmodapi*/api/libfmod-*.so linden/libraries/i686-linux/lib_release_client/
+rm -rf fmodapi*/
+
+# Move the sources to where we want to hold them:
+if [ "$PATH_TO_SOURCES" != "linden" ] && [ "$PATH_TO_SOURCES" != "" ] ; then
+    echo "Moving the sources to $PATH_TO_SOURCES..."
+    mv -f linden $PATH_TO_SOURCES
+fi
+
+# Let's own the files:
+chown -R $USER: $PATH_TO_SOURCES/
+
+# Check for patches to apply. The names of the patches must be in the form
+# slviewer-*.patch* (Example: slviewer-v117-EmbbededNotecard.patch.bz2).
+# They must be applicable from inside the source directory with the -p1
+# option, i.e. they have been built from outside the source directory
+# with a diff command such as:
+# diff -urN linden/ linden-patched/ >slviewer-whatever.patch
+# And they may be gzipped or bzipped.
+PATCHES=`/bin/ls $PATH_TO_ARCHIVES/slviewer-*.patch* 2>/dev/null`
+if [ "$PATCHES" != "" ] ; then
+    echo "Applying patches..."
+    cd $PATH_TO_SOURCES
+    for i in $PATCHES; do
+        echo "Patch: $i"
+        if echo $i | grep ".gz" &>/dev/null ; then
+            gunzip -c $i | patch -p1 -s
+        elif echo $i | grep ".bz2" &>/dev/null ; then
+            bzcat $i | patch -p1 -s
+        else
+            patch -p1 -s <$i
+        fi
+    done
+fi
+
+cd $PATH_TO_SOURCES/indra
+
+# Do a clean build
+./develop.py clean
+
+# Force the vectorization use if we chose so.
+if [ "$FORCE_VECTORIZE" == "yes" ] ; then
+    TUNE_FLAGS="$TUNE_FLAGS -DLL_VECTORIZE=1"
+fi
+if [ "$ALLOW_WARNINGS" == "yes" ] ; then
+    FATAL_WARNINGS="-DGCC_DISABLE_FATAL_WARNINGS:BOOL=TRUE"
+else
+    FATAL_WARNINGS=""
+fi
+# Configure the sources and download the LL provided libraries:
+./develop.py --type=Release  configure "$FATAL_WARNINGS" \
+    -DCMAKE_C_FLAGS:STRING="-O2 $TUNE_FLAGS" -DCMAKE_CXX_FLAGS:STRING="-O2 $TUNE_FLAGS" \
+    -DCMAKE_C_FLAGS_RELEASE:STRING="-O2 $TUNE_FLAGS" -DCMAKE_CXX_FLAGS_RELEASE:STRING="-O2 $TUNE_FLAGS" \
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="-g -O2 $TUNE_FLAGS" -DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="-g -O2 $TUNE_FLAGS"
+
+# Let's use the system GTK+ if available:
+if check $USE_SYSTEM_GTK /usr/include/atk-1.0/atk/atk.h "GTK+" ; then
+    cd $PATH_TO_SOURCES/libraries/i686-linux/lib_release_client
+    rm -f libgtk* libgdk* libglib* libgmodule* libgobject* libgthread* libpango* libatk*
+    cd ../include
+    rm -rf atk-1.0/ gtk-2.0/ glib-2.0/ pango-1.0/
+    cp -a /usr/include/atk-1.0 .
+    cp -a /usr/include/gtk-2.0 .
+    cp -a /usr/lib/gtk-2.0/include/* gtk-2.0/
+    cp -a /usr/include/glib-2.0 .
+    cp -a /usr/lib/glib-2.0/include/* glib-2.0/
+    cp -a /usr/include/pango-1.0 .
+    if [ -d /usr/include/cairo ] ; then
+        cp -a /usr/include/cairo/* .
+    fi
+fi
+
+# Let's use the system zlib if available:
+if check $USE_SYSTEM_ZLIB /usr/include/zlib.h "zlib" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/zlib/
+    rm -f i686-linux/lib_release_client/libz.so.1
+    mkdir -p include/zlib
+    cp -a /usr/include/zlib*.h include/zlib/
+fi
+
+# Let's use the system jpeglib if available:
+if check $USE_SYSTEM_JPEGLIB /usr/include/jpeglib.h "jpeglib" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/jpeglib/ i686-linux/lib_release_client/libjpeg.a
+    mkdir -p include/jpeglib
+    cp -a /usr/include/j*.h include/jpeglib/
+    touch include/jpeglib/jinclude.h
+fi
+
+# Let's use the system ogg if available:
+if check $USE_SYSTEM_OGG /usr/include/ogg/ogg.h "ogg" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/ogg/ i686-linux/lib_release_client/libogg*
+fi
+
+# Let's use the system vorbis if available:
+if check $USE_SYSTEM_VORBIS /usr/include/vorbis/vorbisenc.h "vorbis" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/vorbis/ i686-linux/lib_release_client/libvorbis*
+fi
+
+# Let's use the system SDL if available:
+if check $USE_SYSTEM_SDL /usr/include/SDL/SDL.h "SDL" ; then
+    cd $PATH_TO_SOURCES/libraries/i686-linux
+    rm -rf include/SDL/ lib_release_client/libSDL*
+    update_manifest libSDL
+fi
+
+# Let's use the system openssl if available:
+if check $USE_SYSTEM_SSL /usr/include/openssl/opensslconf.h "openssl" ; then
+    cd $PATH_TO_SOURCES/libraries/i686-linux/lib_release_client
+    rm -f libssl.* libcrypto.*
+    update_manifest libssl
+    update_manifest libcrypto
+fi
+
+# Let's use the system apr if available:
+if check $USE_SYSTEM_APR /usr/include/apr*/apr_base64.h "apr" ; then
+    cd $PATH_TO_SOURCES/libraries/i686-linux
+    rm -rf include/apr-1/*
+    rm -f lib_release_client/libapr*
+    cp -a /usr/include/apr*/* include/apr-1/
+    update_manifest libapr
+fi
+
+# Let's use the system db4 if available:
+if check $USE_SYSTEM_DB4 /usr/include/db4/db.h "db4" ; then
+    rm -f $PATH_TO_SOURCES/libraries/i686-linux/lib_release_client/libdb*.so
+    update_manifest libdb
+    if [ $USE_SYSTEM_DB4 != "yes" ] ; then
+        if ! grep $USE_SYSTEM_DB4 $PATH_TO_SOURCES/indra/cmake/BerkeleyDB.cmake ; then
+            # If we gave a version number instead of "yes", patch the
+            # BerkeleyDB.cmake file to use that DB4 version instead of 4.2.
+            sed -e "s/4.2/$USE_SYSTEM_DB4/" $PATH_TO_SOURCES/indra/cmake/BerkeleyDB.cmake >$TEMP_DIR/BerkeleyDB.cmake
+            mv -f $TEMP_DIR/BerkeleyDB.cmake $PATH_TO_SOURCES/indra/cmake/BerkeleyDB.cmake
+        fi
+    fi
+fi
+
+# Let's use the system expat if available:
+if check $USE_SYSTEM_EXPAT /usr/include/expat.h "expat" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/expat/
+    rm -f i686-linux/lib_release_client/libexpat*
+    mkdir -p include/expat
+    cp -a /usr/include/expat*.h include/expat/
+    update_manifest libexpat
+fi
+
+# Let's use the system xmlrpc-epi if available:
+if check $USE_SYSTEM_XMLRPC /usr/include/xmlrpc.h "xmlrpc-epi" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/xmlrpc-epi/ i686-linux/lib_release_client/libxmlrpc.a
+    mkdir -p include/xmlrpc-epi
+    cp -a /usr/include/xmlrpc*.h include/xmlrpc-epi/
+fi
+
+# Let's use the system c-ares if available:
+if check $USE_SYSTEM_CARES /usr/lib/libcares.a "c-ares" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -f include/ares/*
+    rm -f i686-linux/lib_release_client/libcares.*
+    cp -a /usr/include/ares* include/ares/
+    cp -a /usr/lib/libcares.a i686-linux/lib_release_client/
+fi
+
+# Let's use the system curl if available:
+if check $USE_SYSTEM_CURL /usr/include/curl/curl.h "curl" ; then
+    cd $PATH_TO_SOURCES/libraries
+    rm -rf include/curl/
+    rm -f i686-linux/lib_release_client/libcurl.*
+fi
+
+# Let's use the system uuid if available:
+if check $USE_SYSTEM_UUID /lib/libuuid.so.1 "libuuid" ; then
+    rm -f $PATH_TO_SOURCES/libraries/i686-linux/lib_release_client/libuuid.*
+    update_manifest libuuid
+fi
+
+# Let's use the system google-perftools if available:
+if check $USE_SYSTEM_PERFTOOLS /usr/include/google/malloc_hook.h "google-perftools" ; then
+    cd $PATH_TO_SOURCES/libraries/i686-linux
+    rm -f lib_release_client/libtcmalloc.* lib_release_client/libstacktrace.*
+    rm -rf include/google/
+    cp -a /usr/lib/libstacktrace.* /usr/lib/libtcmalloc.so* lib_release_client/
+    cp -a /usr/include/google include/
+    update_manifest tcmalloc
+    update_manifest stacktrace
+fi
+
+# Let's use the system libELFIO if available:
+if check $USE_SYSTEM_ELFIO /usr/include/ELFIO.h "libELFIO" ; then
+    cd $PATH_TO_SOURCES/libraries/i686-linux
+    rm -f include/ELFIO/*
+    rm -f lib_release_client/libELFIO.*
+    cp -af /usr/include/ELF* include/ELFIO/
+    cp -af /usr/lib/libELFIO.so lib_release_client/
+    update_manifest ELFIO
+fi
+
+# Let's use the system libstdc++ if available:
+if check $USE_SYSTEM_LIBSTDC /usr/lib/libstdc++.so.6 "libstdc++" ; then
+    rm -f $PATH_TO_SOURCES/libraries/i686-linux/lib_release_client/libstdc++.*
+    update_manifest libstdc
+fi
+
+# Force libkdu inclusion
+# (disabled for now (v1.21.0 viewer) as the cmake scripts fail to get libkdu from Internet).
+if false; then
+# Remove everything dealing with libstdc++ and the crash logger:
+update_manifest libstdc
+update_manifest logger
+# Now, any line with a '#' followed with several spaces _should_ be dealing
+# with the libkdu stuff... So, we simply remove the '#"...
+sed -e "s/#        them/# them/" $PATH_TO_SOURCES/indra/newview/viewer_manifest.py >$TEMP_DIR/viewer_manifest.py
+sed -e "s/^#   /   /" $TEMP_DIR/viewer_manifest.py >$PATH_TO_SOURCES/indra/newview/viewer_manifest.py
+rm -f $TEMP_DIR/viewer_manifest.py
+chmod +x $PATH_TO_SOURCES/indra/newview/viewer_manifest.py
+fi
+
+# Check to see if we simply want to unpack the sources:
+if [ "$1" == "--prep" ] ; then
+    echo "Prepared sources available in: $PATH_TO_SOURCES"
+    exit 0
+fi
+
+compile
+

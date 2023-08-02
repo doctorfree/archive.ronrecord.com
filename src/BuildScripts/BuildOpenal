@@ -1,0 +1,26 @@
+#!/bin/bash
+
+TOP=/home/doctorfree/src
+BUILD=$TOP/openal-soft/build
+DEBFULLNAME="Ronald Joe Record"
+export DEBFULLNAME
+
+[ -d $TOP ] || mkdir -p $TOP
+
+cd $TOP
+
+rm -rf openal-soft
+
+git clone git://repo.or.cz/openal-soft.git openal-soft
+
+cd $TOP/openal-soft/build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+
+[ -d $BUILD ] || mkdir -p $BUILD
+
+cd $BUILD
+
+dh_make -p openal_1.12.854 -e rr@ronrecord.com -s -n
+
+debuild -us -uc

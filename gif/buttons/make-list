@@ -1,0 +1,13 @@
+#!/usr/local/bin/perl
+# Takes a list of files as standard in (piped from ls maybe)
+# outputs HTML list of IMG SRC tags for the list...
+
+print "<HR>\n<H2></H2>\n\n";
+
+while (<>) {
+	chop($_);
+	print "<IMG SRC=\"/gifs/$_\" ALT=\"\">\n";
+	print "&lt;IMG SRC=\"/gifs/$_\" ALT=\"\"&gt;<P>\n\n";
+}
+
+print "<P><HR><P>\n";

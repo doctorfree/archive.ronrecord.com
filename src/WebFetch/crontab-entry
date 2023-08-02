@@ -1,0 +1,2 @@
+# Fetch headlines from a variety of sources
+30 7,12,17,20 * * * /usr/local/bin/webfetch > /dev/null 2>&1

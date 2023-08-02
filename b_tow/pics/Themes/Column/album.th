@@ -1,0 +1,87 @@
+#c// ####################################################################
+#c// Album Theme created by DaveSource.com
+#c// ####################################################################
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title> 
+      Album: <: pAlbum_Name() :>
+    </title>
+    <: Meta() :>
+  </head>
+  <body bgcolor='white' text=#444444 link=#ff00ff vlink=#ff00ff>
+
+  <table width='95%'>
+    <tr>
+      <td align='left'>
+        <h2> <: pJoin_Parent_Albums(":"); :> </h2>
+      </td>
+      <td align='right'>
+        <h1><a href=<:=Back():>>Up</a></h1>
+      </td>
+    </tr>
+  </table>
+
+  <table width='100%'>
+    <tr valign='top'>
+      <td width='25%' align='left'>
+        <: if (Child_Albums()) { _:>
+        <p><hr><p>
+        More albums:
+        <p>
+        <:   while (Child_Albums()) {
+               pChild_Album();
+               print "<br />\n";
+               Next_Child_Album();
+             }
+        :>
+        <: } :>
+      </td>
+      <td align='center'>
+
+<: if (isHeader()) { _:>
+        <center>              
+          <:pHeader():>            
+        </center>                     
+        <br>
+<: } _:>
+
+#c    # Loop on the images
+<:    while(Images()) { _:>
+        <: pImage() :>
+        <br />
+        <font size='-2'>
+          <: pImage_Caption() :>
+        </font>
+        <p>
+
+#c    # End while images
+<:    Next_Image() :>
+<:    } :>
+
+<: if (isFooter()) { _:>
+        <center>              
+          <:pFooter():>            
+        </center>                     
+        <br>
+<: } _:>
+
+      </td>
+      <td width='25%' align='left'>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=3>
+        <br />
+        <font size='-1'>
+          <center>
+            <: Credit() :> on <:=scalar localtime:>
+          </center>
+        </font>
+      </td>
+    <tr>
+
+  </table>
+  </body>
+</html>

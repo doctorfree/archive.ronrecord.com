@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Thin Client Deployment at The City of Largo</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<H1>Thin Client Deployment at The City of Largo</H1>
+<P>
+<A HREF=mailto:drichard@largo.com>Dave Richards</A> of the City of Largo, 
+Florida gave an interesting
+presentation at SCO Forum 1999 on how the city has deployed a thin
+client, server-centric solution. This has enabled the City of Largo
+to operate more efficiently at a greatly reduced cost and with much
+lower maintenance and support overhead.
+<P>
+The City is upgrading from a rack of SCO OpenServer servers to UnixWare 7.
+In addition, they are converting their thin client desktops from XDT3 to
+KDE (the K Desktop Environment). The City of Largo is an excellent example
+of server-centric thin client computing deployed mixing commercial and 
+<A HREF=/skunkware>Open Source</A> software.
+<P>
+Both the 
+<A HREF=/skunkware/kde/>SCO OpenServer and UnixWare 7 releases of KDE 1.1.2</A>
+contain alternate kpanel binaries  and configuration files. These are tailored 
+for use in environments where KDE is pushed out to thin clients from SCO 
+servers. Often in this situation the thin clients will utilize a local window 
+manager to reduce network traffic. It's also common that these clients will be 
+diskless and/or wireless. For these reasons, the kpanel functionality has been
+configured alternately for use with thin clients. To use the thin client
+kpanel, simply replace the <I>/usr/local/kde/bin/kpanel</I> binary with 
+<I>/usr/local/kde/bin/kpanel_nc</I> and 
+<I>/usr/local/kde/share/config/kpanelrc</I> with
+<I>/usr/local/kde/share/config/kpanelrc_nc</I>. You will also need to add 
+appropriate lines to <I>/usr/local/kde/bin/nc_logout</I> to logout a thin 
+client user.
+</P>
+<P>
+Here is <A HREF=html>Dave's Slide Show</A>. Click on any thumbnail to
+view the full image. Click on the 1st thumbnail to start the show. The first
+slide provides an overview of the architecture - 6 SCO OpenServer 5 servers
+(recently upgraded to UnixWare 7 servers), 1 RedHat Linux server, 1 SGI Irix 
+server,
+1 NT Windows Terminal Server supporting a variety of thin clients and X 
+terminals over a variety of connection mechanisms and application servers
+including <A HREF=http://tarantella.sco.com>Tarantella</A>. Subsequent slides 
+are simply pictures of the client hardware and screen shots.
+<P>
+Here's a brief description of each of the slides:
+<PRE>
+Slide     Description
+=====     ===========
+<A HREF=html/mgp00001.html>1         Network Diagram. </A>
+<A HREF=html/mgp00002.html>2         NCD Explora 450 in use, KDE desktop.</A>
+<A HREF=html/mgp00003.html>3         NCD Explora 700 in use, KDE desktop</A>
+<A HREF=html/mgp00004.html>4         "Thin Client" really is thin. ;)</A>
+<A HREF=html/mgp00005.html>5         Wyse 5355 running Tarantella native client</A>
+<A HREF=html/mgp00006.html>6         Same</A>
+<A HREF=html/mgp00007.html>7         Same</A>
+<A HREF=html/mgp00008.html>8         Same, ports available on 5355</A>
+<A HREF=html/mgp00009.html>9         Experimental, WinCE device, running Tarantella.</A>
+<A HREF=html/mgp00010.html>10        Same</A>
+<A HREF=html/mgp00011.html>11        Same, but wireless</A>
+<A HREF=html/mgp00012.html>12        Same, wireless</A>
+<A HREF=html/mgp00013.html>13        Screen KDE from UnixWare, WordPerfect from SCO OpenServer</A>
+<A HREF=html/mgp00014.html>14        Screen, GroupWise from SCO OpenServer</A>
+<A HREF=html/mgp00015.html>15        Screen, Panther development system on SCO OpenServer</A>
+<A HREF=html/mgp00016.html>16        Acrobat, Xanim, Netscape, LICQ, GAIM from Linux</A>
+<A HREF=html/mgp00017.html>17        Domestic Violence System, on SCO OpenServer</A>
+<A HREF=html/mgp00018.html>18        Pawns Module, from AIX w/ Informix</A>
+<A HREF=html/mgp00019.html>19        Recreation Module from SCO OpenServer w/ Oracle</A>
+<A HREF=html/mgp00020.html>20        tkIRC from SCO OpenServer</A>
+<A HREF=html/mgp00021.html>21        WindowsTerminalServer with UIS/WinCenter</A>
+</PRE>
+<P>
+Dave is willing to provide additional information and answer questions on
+the City of Largo's thin client deployment. E-mail Dave Richards at
+<A HREF=mailto:drichard@largo.com>drichard@largo.com</A>.
+<P>
+<UL>
+<LI><A HREF=/skunkware/largo/html>City of Largo Thin Client Slide Show</A>
+<LI><A HREF=/skunkware/>SCO Skunkware Open Source Software</A>
+<LI><A HREF=http://tarantella.sco.com>Tarantella Application Broker</A>
+<LI><A HREF=/skunkware/kde>KDE on SCO Platforms</A>
+<LI><A HREF=http://www.kde.org>KDE Home Page</A>
+<LI><A HREF=http://www.largo.com>City of Largo Home Page</A>
+</UL>
+<P>
+</BODY>
+</HTML>

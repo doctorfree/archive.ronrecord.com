@@ -1,0 +1,20 @@
+.title {
+	font-size: medium;
+	color: #ffffff;
+	font-family: Times New Roman,Georgia,Times;
+}
+.main {
+	font-family: Times New Roman,Georgia,Times;
+}
+.credit {
+	font-size: smaller;
+	font-family: Verdana;
+	color: #ffffff;
+}
+BODY {
+	background-image: url(bkgrnd.gif);
+	color: #FFFFFF;
+}
+a:link { color: #0099FF; }
+a:visited { color: #0099FF; }
+a:active { color: #0099FF; }

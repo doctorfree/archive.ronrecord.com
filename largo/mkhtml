@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /x/rr/SCO/Forum99/Dave
+rm -rf html
+mkdir html
+mgp -g 1024x768 -D html largo.mgp &

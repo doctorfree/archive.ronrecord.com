@@ -1,0 +1,131 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>User's Guide - Chapter 4</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
+ALINK="#FF0000" BACKGROUND="/gif/bk.gif" 
+WIDTH=70 HEIGHT=64>
+<P>
+<B>Chapter 4  Putting It All Together<!--Chapter 4 - Putting It
+All Together--></B>
+<P>
+<B>4.1 Locating Bifurcations<!--4.1 Locating Bifurcations--></B>
+<!--Bifurcationlocating-->
+<P>
+Often the first task in analyzing an endomorphism (or any map)
+is locating critical parameter values at which bifurcations occur.
+The use of <B>endo</B> can usually make this task much easier.
+After having established the domain of iteration and applying
+the classical dynamical systems tools such as calculation of the
+eigenvalues at fixed points, endo can be employed to construct
+a graphical display of the Lyapunov exponents and corresponding
+bifurcations diagrams.
+<P>
+Use the menu of maps, command-line options, or interactive run-time
+control to select the map and Lyapunov exponent mode. To view
+bifurcation diagrams, also select the bifurcation diagram mode.
+<B>Endo</B> will now construct a graphical display of the Lyapunov
+exponents. To locate critical bifurcation values, zoom in on an
+area of the graphical display which exhibits a sudden shift in
+color (e.g. shades of blue next to shades of green or red). Use
+the &quot;information&quot; window to determine the parameter
+values being displayed. The &quot;information&quot; window can
+be toggled by use of the &quot;I&quot; key. Continue zooming until
+a small enough window is displaying the transition between negative
+and positive Lyapunov exponents. Use values from these parameter
+intervals to calculate and display attractors, basins of attraction,
+critical and pre-critical curves, and absorbing areas.
+<P>
+<B>4.2 Displaying Bifurcation Diagrams<!--4.2 Displaying Bifurcation
+Diagrams--></B><!--Bifurcationdiagrams-->
+<P>
+If you selected the bifurcation diagram mode as well, an additional
+window displaying bifurcation diagrams is displayed. As the Lyapunov
+exponents are being calculated, bifurcation diagrams are simultaneously
+displayed. Several bifurcation diagram display modes are available.
+By default, the bifurcation diagram window displays an attractor
+in the selected region of the plane for each parameter value.
+Alternate modes are selected by pressing the '2' key. The alternate
+modes display the x-coordinate, y-coordinate, or x and y coordinates
+of the trajectory on the attractor as the y-coordinate in the
+bifurcation diagram and the parameter value as the x-coordinate
+in the bifurcation diagram. If <B>endo</B> was compiled with the
+3-D option, then an additional three dimensional mode is available.
+This mode is selected with the '3' key and displays the bifurcation
+diagram with one axis representing the parameter value and the
+other two representing the x and y coordinates of the attractor
+for that parameter value.
+<P>
+Each of the bifurcation diagram modes has an &quot;animation&quot;
+mode<!--Animation mode--> that can be toggled with the 'e' key.
+In animation mode, the bifurcation diagram window is cleared when
+a new parameter value is selected. In this mode the window displays
+a &quot;movie&quot; of the attractor as it changes with the changing
+parameter values. Zooming in and out of the bifurcation diagram
+window is also possible.
+<P>
+<B>4.3 Locating an Absorbing Area<!--4.3 Locating an Absorbing
+Area--></B><!--Absorbing Arealocating-->
+<P>
+The procedure developed by Christian Mira for determining an absorbing
+area (described in Chapter 5) is implemented as an algorithm in
+<B>endo</B>. To display the boundary of an absorbing area with
+<B>endo</B>, select the display of the critical curves window.
+It is only necessary to iterate the map for a single iteration
+in order to calculate the critical curve  an its iterate . To
+do this, set the settle to 0 and the dwell to 1 (e.g. use the
+command-line switches &quot;-S 0 -n 1 -P 1&quot;). After calculating
+and displaying the critical curves, <B>endo</B> will highlight
+the critical arc<!--Critical curvescritical arcs--> (if any) to
+be iterated by displaying it in white. If there is no intersection
+between  and , alternate domains of iteration may be tried.
+<P>
+After the critical curves are calculated and critical arc highlighted,
+increase the dwell by pressing the '&gt;' key the desired number
+of times (each time doubles the dwell count). Press 'g' to iterate
+the critical arc. Each iteration of the critical arc will be displayed
+in a different color. Increase or decrease the dwell as desired,
+erase the critical curves window and redisplay critical curves
+and iterates of the critical arc. If an additional arc was detected,
+that arc can be selected by pressing 't'.
+<P>
+<B>4.4 Making a Movie<!--4.4 Making a Movie--></B><!--Movie-->
+<P>
+Once an &quot;interesting&quot; regime of parameter values is
+located and bifurcation diagrams viewed, it is often desirable
+to generate a sequence of &quot;frames&quot; for use in generating
+a computer animation of the bifurcations. This is simplified through
+the use of <B>endo</B>'s  &quot;demo&quot; mode<!--Demo mode-->.
+When given the &quot;-0&quot; command-line option, <B>endo</B>
+exits after completing the specified number of iterations and
+optionally writing the contents of a window to a file. To generate
+a sequence of files representing frames in an animated bifurcation
+sequence, use the &quot;-0 -o filename -A parameter-value&quot;
+command-line switches in conjunction with the shell scripting
+capabilities of a UNIX shell. An example for use with the Bourne
+shell (/bin/sh on most systems) is as follows :
+<P>
+for APARM in 90 80 70 60 50 40 30 20 10 00
+<P>
+do
+<P>
+ PIC=pics/demo1_$APARM
+<P>
+ [ -f $PIC.gif ] &amp;&amp; continue
+<P>
+endo -0 -7 -9 1 -8 0 -T 28 -S 512 -n 512 -r 100 -A -1.$APARM -B
+-0.42 -x -3 , -2 -y -3 , -2 -w 6 , 4 -h 6 , 4 -W 128 , 320 -H
+128 , 240 -o $PIC.ppm , 2 $*
+<P>
+done
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue3.gif" ALT="">
+<P><A HREF="../resume.pdf">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Back to Dr. Record's Resume</A> or proceed to
+<A HREF="chapter5.html">Chapter 5 of Dr. Record's Ph.D. Thesis
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

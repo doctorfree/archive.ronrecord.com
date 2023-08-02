@@ -1,0 +1,4 @@
+$TITLE_FONT = "size='5' color='#8b4513' face='Times New Roman,Georgia,Times'";
+$MAIN_FONT = "face='Times New Roman,Georgia,Times'";
+$CREDIT_FONT = "face='Verdana' color='#8b4513'";
+$BODY = "bgcolor='#ffe4c4' link='#006400' alink='#006400' vlink='#006400' text='black'";

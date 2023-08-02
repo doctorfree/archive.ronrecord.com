@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PCH=/home/doctorfree/src/kde/patches
+TOP=`pwd`
+PKG=`basename $TOP`
+
+find . -name \*\.00 | while read i
+do
+    [ -d $PCH/$PKG ] || mkdir -p $PCH/$PKG
+    j=`echo $i | sed -e "s/\.00//"`
+    n=`echo $j | sed -e "s/^\.\///" -e "s/\//-/"`
+    diff -u $i $j > $PCH/$PKG/${n}.patch
+done

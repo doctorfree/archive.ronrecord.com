@@ -1,0 +1,110 @@
+<: $CHILD_ALBUM_COLS = 4; :>//
+<: $IMAGE_COLS = Get_Opt("columns"); :>//
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title> 
+      Album: <: pAlbum_Name() :>
+    </title>
+    <: Meta() :>
+  </head>
+  <body bgcolor='white' text=#000000 link=#ff00ff vlink=#ff00ff>
+  <table width='95%'>
+    <tr>
+      <td align='left'>
+        <: pJoin_Parent_Albums(":"); :>
+      </td>
+      <td align='right'>
+        <a href=<:=Back():>>Back</a>
+      </td>
+    </tr>
+  </table>
+  <hr />
+
+
+#c// Are there more albums below this one?
+<:  if (Child_Albums() || isHeader()) { _:>
+    <table border="0" width='95%' align='center' cellspacing='0' cellpadding='0'>
+    <tr>
+
+<:    if (Child_Albums()) { _:>
+      <td>
+    <font <:=$TITLE_FONT:>><b>More Photos</b>:</font><br>
+
+#c//
+#c// Loop on all the albums
+<:      while (Child_Albums()) { _:>
+          <font <:=$TITLE_FONT:>>&nbsp;&nbsp;<: pChild_Album() :></font><br>
+#c//
+#c// End album loop
+<:      Next_Child_Album() :>
+<:      } :>
+
+      </td>
+<:    } :>
+
+#c// --SGR
+<:   if (isHeader()) { _:>
+	    <td valign="bottom" width="50%">
+	      <font <:=$TITLE_FONT:>>
+		<center>
+		<:pHeader():>
+		</center>
+	      </font>
+	    </td>
+<:   } _:>
+#c// ++SGR
+
+    </tr></table>
+
+<hr />
+#c//
+#c// End if sub-albums
+<:  } :>
+
+#c  # Are there any images?  (There might only be CHILD_ALBUMS!)
+<:  if (Images()) { _:>
+  <table cellspacing='10' width='95%'>
+    <tr>
+
+#c    # Loop on the images
+<:    while(Images()) { _:>
+        <td width='25%' valign='center'>
+ 	<div align="center">
+          <a href=<:=Image_URL():>><:pImage_Thumb_Src():></a><br>
+#c	  <a href=<:=Image_URL():>>
+		<font size="-1"><:=Image_Name():></font>
+#c </a>
+	</div>
+#c         <: pImage() :>
+#c          <font size='-2'>
+#c            <: pImage_Caption() :>
+#c          </font>
+        </td>
+
+<:      if (!(Image_Cnt() % Get_Opt('columns')) && Images_Left()) { _:>
+          </tr><tr>
+<:      } :>
+
+#c    # End while images
+<:    Next_Image() :>
+<:    } :>
+    </tr>
+  </table>
+
+#c  # End if images
+<hr />
+<:  } :>
+
+<: if (isFooter()) { _:>
+        <center>              
+          <:pFooter():>         
+        </center>
+        <hr>
+<: } _:>
+    <font size='-1'>
+      <: Credit() :> on <:=scalar localtime:>
+    </font>
+  </body>
+</html>

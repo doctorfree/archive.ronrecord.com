@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<TITLE>Mathematical Recreations</TITLE>
+</HEAD>
+<BODY>
+<H1>Mathematical Recreations</H1>
+<P>
+<DL>
+<DT><B>Authored and Contributed by</B>
+<DD><A HREF=>Ronald Joe Record</A> 
+(except "xwator" authored and contributed by
+Ronald Joe Record and Brian Chapman)
+<P>
+<DT><B>Restrictions</B>
+<DD>Copyright 1990, 1991, 1992, 1993, 1994 Ronald Joe Record 
+(except "xwator" Copyright 1990 Ronald Joe Record and Brian Chapman)
+
+<P>
+<DT><B>Availability</B>
+<DD>
+The mathrec source code is freely redistributable. The author maintains
+binary distributions for Caldera OpenLinux 3.1, OpenServer, UnixWare 7
+and Open UNIX 8. These distributions and the source code are available via:
+<P>
+<TABLE WIDTH=100%>
+<TR>
+<TH COLSPAN=2>Binary Distributions</TH>
+</TR>
+<TR>
+<TD>OpenLinux/Open UNIX</TD>
+<TD>ftp://ftp2.sco.com/pub/.../RPMS/mathrec-1.1c-1col.i586.rpm (no longer available)</TD>
+</TR>
+<TR>
+<TD>UnixWare 7</TD>
+<TD>
+<A HREF=ftp://ftp2.sco.com/pub/skunkware/uw7/Packages/mathrec-1.1b.pkg>
+ftp://ftp2.sco.com/pub/skunkware/uw7/Packages/mathrec-1.1b.pkg</A></TD>
+</TR>
+<TR>
+<TD>OpenServer</TD>
+<TD>
+<A HREF=ftp://ftp2.sco.com/pub/skunkware/osr5/vols/mathrec-1.1c-VOLS.tar>
+ftp://ftp2.sco.com/pub/skunkware/osr5/vols/mathrec-1.1c-VOLS.tar</A></TD>
+</TR>
+</TABLE>
+<P>
+<TABLE WIDTH=100%>
+<TR>
+<TH COLSPAN=2>Source Code Distributions</TH>
+</TR>
+<TR>
+<TD>Source RPM</TD>
+<TD>ftp://ftp2.sco.com/pub/.../SRPMS/mathrec-1.1c-1col.src.rpm (no longer available)</TD>
+</TR>
+<TR>
+<TD>Gzip'd tar archive</TD>
+<TD>
+<A HREF=ftp://ftp2.sco.com/pub/skunkware/src/x11/misc/mathrec-1.1c.tar.gz>
+ftp://ftp2.sco.com/pub/skunkware/src/x11/misc/mathrec-1.1c.tar.gz</A></TD>
+</TR>
+</TABLE>
+<P>
+<DT><B>Description</B>
+<DD>
+The mathrec package consists of several X11 clients :
+<P>
+<TABLE WIDTH=100%>
+<TR>
+<TD><A HREF="coral/ReadMe.html">coral</A></TD>
+<TD><A HREF="endo/ReadMe.html">endo</A></TD>
+<TD><A HREF="gasket/ReadMe.html">gasket</A></TD>
+<TD><A HREF="hop/ReadMe.html">hop</A></TD>
+<TD><A HREF="julia/ReadMe.html">julia</A></TD>
+<TD><A HREF="lds/ReadMe.html">lds</A></TD>
+<TD><A HREF="lyap/ReadMe.html">lyap</A></TD>
+</TR><TR>
+<TD><A HREF="madness/ReadMe.html">madness</A></TD>
+<TD><A HREF="julia/ReadMe.html">mandel</A></TD>
+<TD><A HREF="splines/ReadMe.html">splines</A></TD>
+<TD><A HREF="spore/ReadMe.html">spore</A></TD>
+<TD><A HREF="stars/ReadMe.html">stars</A></TD>
+<TD><A HREF="xtopo/ReadMe.html">xtopo</A></TD>
+<TD><A HREF="xwator/ReadMe.html">xwator</A></TD>
+</TR>
+</TABLE>
+<P>
+<DT><B>Build</B>
+<DD>
+To build the mathrec binaries, use the Imakefile. 
+To build with the Imakefile, first type
+"xmkmf -a" or "imake -DUseInstalled -I/usr/lib/X11/config" if your system 
+doesn't have xmkmf. Then just type "make" and the mathrec binaries will be
+built. 
+
+<P>
+<DT><B>Install</B>
+<DD>
+To install mathrec, you can simply run "make install; make install.man".
+Since mathrec is built with imake, it honors the DESTDIR setting. So, if
+you want to install the mathrec package in a "packaging ground", you can
+set the DESTDIR environment variable to the location below which the files
+will be installed.
+
+<P>
+<DT><B>Known Limitations</B>
+<DD>These programs were originally written for 8-bit PseudoColor X11 displays.
+I have modified them so that they work on a TrueColor visual but many of
+the features are not present without a PseudoColor display. For instance,
+the installation of a private colormap and the spinning of the color map
+are features available only on a PseudoColor display visual.
+
+<P>
+<DT><B>Productivity</B>
+<DD>These programs and others like them are probably responsible for more
+CPU cycles than any other single application.
+
+<P>
+<DT><B>Safety</B>
+<DD>I have used these for years without harm.
+
+<P>
+<DT><B>Work Planned</B>
+<DD>None
+
+<P>
+<DT><B>Documentation</B>
+<DD>manual pages.
+
+<P>
+<DT><B>Verification</B>
+<DD>Execute any or all of the shell scripts provided in
+/usr/local/mathrec/julia, /usr/local/mathrec/mandel, /usr/local/mathrec/lds,
+/usr/local/mathrec/endo,
+/usr/local/mathrec/lyap,
+/usr/local/mathrec/madness and
+/usr/local/mathrec/splines.
+
+<P>
+<DT><B>Feedback</B>
+<DD>
+Ideas, comments, additions, deletions, suggestions, bug reports, code review,...
+e-mail Ronald Record at <A HREF=mailto:rr@ronrecord.com>rr@ronrecord.com</A>
+
+</DL>
+</BODY>
+</HTML>

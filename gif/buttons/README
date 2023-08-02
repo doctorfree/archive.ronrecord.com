@@ -1,0 +1,76 @@
+BEFORE PUBLISHING THE ICON LISTS
+
+These icons have been gathered and sorted together in HTML files -
+
+	index.html
+
+	arrows.html
+	icons.html
+	lines.html
+	dingbats.html
+	othericons.html
+
+Before serving these files to others, please make sure the URLs in the 
+HTML files to refer to your server and the right directory.
+
+ie: change all occurrences 
+of   /gifs/
+to   /wherever/
+using sed for example:
+
+sed 's/\/gifs\//\/wherever\//' < index.html > index.html.new
+
+The convert-url shell-script has been provided for your convenience.
+It will convert the "/gifs/ in all the HTML files in this directory to
+point to this server instead.  Simply supply the correct hostname for
+this server as a parameter.
+
+e.g.:		convert-url  /wherever/
+
+
+Thank you for your cooperation.
+
+NOTE:
+The search program is a Perl script that needs to have
+  Local CGI script execution enabled (using .htaccess)
+or 
+  be placed in the cgi-bin directory and have the link from
+  index.html fixed to point to the cgi-bin directory.
+
+
+BUTTONBARS:
+The button bars advice only applies if you are running NCSA HTTPd
+and have enabled server side include files (HTTPd 1.3 or later).
+
+If you have not enabled server side includes (eg: for security reasons)
+then you might as well remove the reference to buttonbars.html from
+the index.html file.
+
+
+
+SCRIPTS
+=======
+convert-url	is a wrapper around sed and a for loop.
+
+make-list	is a simple script to create these lists of icons.
+	ls *.gif | make-list > all-icons.html
+	This will list all the gif files in the directory and wrap
+	them up as inline graphics and place the URLs after each graphic
+	so that they can be pasted into documents.
+
+tr		is a simple interface to gif-trans, a program to make
+	icons and so on transparent using GIF89 extensions.  Mosaic will
+	use this to render inline GIFs correctly (nicely) so that they
+	blend into the background, and avoid the white-border effect.
+	I got fed up typing all the simpsons parameters.
+
+
+Check 
+http://www.mit.edu:8001
+/afs/athena.mit.edu/user/n/o/nocturne/www/transparent.html
+
+for details on how to make transparent images.
+
+Christian Mogensen
+mogensen@cs.stanford.edu
+http://www-pcd.stanford.edu/mogens/

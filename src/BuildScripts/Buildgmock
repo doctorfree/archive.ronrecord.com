@@ -1,0 +1,25 @@
+#!/bin/bash
+
+TOP=/home/doctorfree/src
+NAM=gmock
+VER=1.4.0
+BUILD=$TOP/${NAM}-${VER}/build
+DEBFULLNAME="Ronald Joe Record"
+export DEBFULLNAME
+
+[ -d $TOP ] || mkdir -p $TOP
+
+cd $TOP
+
+rm -rf ${NAM}-${VER}
+
+bzcat ${NAM}-${VER}.tar.bz2 | tar xf -
+
+cd $TOP/${NAM}-${VER}
+[ -d build ] || mkdir build
+cd build
+../configure --prefix=/usr --disable-shared --enable-static
+
+dh_make -p ${NAM}_${VER} -e rr@ronrecord.com -s -n
+
+debuild -us -uc

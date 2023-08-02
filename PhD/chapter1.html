@@ -1,0 +1,267 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>User's Guide - Chapter 1</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
+ALINK="#FF0000" BACKGROUND="/gif/bk.gif" 
+WIDTH=70 HEIGHT=64>
+<P>
+<B>Chapter 1  Getting Started<!--Chapter 1 - Getting Started-->
+</B><!--Getting started-->
+<P>
+<B>1.0 Assumptions and notational conventions<!--1.0 Assumptions
+and conventions--></B>
+<P>
+In what follows, an introductory knowledge of UNIX, X11 graphical
+clients, and discrete dynamical systems is assumed. Should you
+need assistance in these areas, please see the references listed
+in Appendix A. I will attempt to denote references to UNIX commands,
+filenames, X11 graphical clients and servers by displaying these
+in bold type. For example, the UNIX command <B>cp</B> can be used
+to copy the <B>endo</B> binary to the <B>/usr/bin/X11</B> directory
+if so desired. References to dynamical systems terminology will
+be italicized. Optional command line arguments will be enclosed
+in braces as in &quot;<B>-w val1 [val2]</B>&quot;.
+<P>
+<B>1.1 Requirements<!--1.1 Requirements--></B><!--Requirements
+-->
+<P>
+<B>Endo</B> is an <B>X11</B> graphical client. It is written in
+the <B>C </B>programming language and is highly portable across
+a wide variety of computer architectures. In order to run <B>endo
+</B>, your computer system must be running an <B>X</B> server.
+The <B>X</B> server is available from the <B>X</B> Consortium
+and through a wide variety of commercial vendors. You will also
+need access to an <B>X</B> development system and compiler in
+order to build <B>endo</B> from source. Finally, your system will
+need sufficient memory and disk space. On most systems, 8 Mb of
+memory is sufficient. The <B>endo</B> binary, objects, source
+and scripts consume under 2 Mb of disk space. However, you may
+want to reserve additional disk space for saved images as <B>endo
+</B> allows you to dump the contents of any of its windows to
+a file.
+<P>
+<B>1.2 Obtaining the source<!--1.2 Obtaining the source--></B>
+<!--Obtaining the source-->
+<P>
+Assuming you have an <B>X</B> server and development system, your
+first step will be to acquire the software. <B>Endo</B> has been
+submitted to the Usenet Newsgroup <B>comp.sources.x</B> and the
+latest version is archived at <B>ftp.uu.net</B>. It has also been
+accepted as contributed software for the <B>X11 R6</B> distribution
+available from the <B>X</B> Constortium. You can retrieve the
+source via anonymous <B>ftp</B> to <B>ftp.uu.net,</B> <B>ftp.x.org
+</B> or any other site that archives <B>comp.sources.x</B>. In
+addition, a copy of the software on a 3.5&quot; MS-DOS format
+diskette should accompany this document. Additional copies or
+alternate formats can be obtained from the author by e-mailing
+a request to <B>rr@ronrecord.com </B>.
+<P>
+<B>1.3 Building<!--1.3 Building--></B><!--Building-->
+<P>
+After acquiring and extracting the source onto your system, the
+next step will be building the <B>endo</B> binary. First, <B>cd
+</B> into the <B>endo</B> source directory. Execute the command
+<B>Build</B> in the current directory. This Bourne Shell script
+will attempt to execute the <B>xmkmf</B> program. If it is not
+found, it will attempt to execute the <B>imake</B> command. If
+neither the <B>xmkmf</B> or <B>imake </B>programs are found, the
+<B>X</B> development system may not be installed on your system.
+Install the <B>X</B> development system and re-execute the <B>Build
+</B>script. If you are unable to install an <B>X</B> development
+system or if <B>imake</B> is unavailable, a standard <B>Makefile
+</B>called <B>Makefile.std </B>is provided for use with the <B>make
+</B> program. If <B>xmkmf</B> or <B>imake</B> are found, the 
+<B>Build</B> script then executes the <B>make</B> program and
+proceeds to compile the <B>endo</B> source modules. After compiling
+these successfully, the <B>endo</B> binary will be linked.
+<P>
+<B>1.4 Installing<!--1.4 Installing--></B><!--Installing-->
+<P>
+You are now ready to install the <B>endo</B> software package.
+Execute the <B>Install</B> script in the current directory. This
+script checks to see if you are the <B>root </B>user. If so, it
+copies the <B>endo</B> distribution to <B>/usr/local/bin</B> and
+<B>/usr/local/lib/endo</B>. If you do not have root permissions,
+the <B>endo</B> binary is copied to <B>$HOME/bin</B> and the 
+<B>endo</B> scripts are copied to <B>$HOME/lib/endo</B>.
+<P>
+To summarize, in order to build and install <B>endo</B> it is
+only necessary to execute the <B>Build</B> and <B>Install</B>
+scripts in the <B>endo</B> source directory.
+<P>
+<B>1.5 Basic Definitions<!--1.5 Basic Definitions--></B><!--Definitions
+-->
+<P>
+The following brief definitions of a few of the terms used in
+this document should suffice to get you started. As the terms
+become more familiar and especially when used in conjunction with
+the software, these definitions should become more clear.
+<P>
+<B> basin of attraction</B> - For an attractor, those points whose
+trajectories<!--Trajectorybasins of attraction--> eventually lead
+to the attractor. One of the five main <B>endo</B> windows displays
+the basins of attraction. In most of the provided color palettes,
+colors indicate with which attractor the basin is associated,
+and shades of that color indicate the rate at which that point's
+trajectory is approaching its attractor.
+<P>
+<B> bifurcation</B><!--Bifurcation--><B> diagram </B>- For maps
+in one dimension, the bifurcation diagram was usually a figure
+in two dimensions with the horizontal axis representing a parameter
+interval and the vertical axis representing an interval in the
+domain. Points were plotted on this diagram by iterating the map
+for each of a discrete number of parameter values in the selected
+interval. In the two dimensional case, bifurcation diagrams are
+presented in a variety of ways. All of these involve one axis
+representing a parameter interval and two axes representing a
+rectangle in the domain. The system is run without recording for
+a specified number of iterations to allow for the passing of &quot;transients&quot;.
+<P>
+<B> command line switch</B> (also referred to as an <B>argument,
+switch</B>,<B> </B>or<B> option</B>) - A string or strings, usually
+beginning with a '-' and optionally followed by numeric values.
+These strings are parsed by the UNIX shell and processed as arguments
+to the command.
+<P>
+ <B>critical curve</B><!--Critical curvesdefinition--> - The 2-D
+analog of critical points in 1-D maps. That is, those points for
+which the determinant of the Jacobian<!--Jacobian--> of the map
+is zero. One of the five main <B>endo</B> windows displays the
+critical curves<!--Critical curvesdefinition--> and their iterates.
+<P>
+<B> determinant of the Jacobian</B><!--Jacobian--><B> </B>- The
+calculation of the critical curves<!--Critical curvescalculation
+--> and Lyapunov exponents utilizes the determinant of the Jacobian
+matrix of the map at a point. This is simply the determinant of
+the matrix of partial derivatives,  , where the map is defined
+by
+<P>
+<I> (x, y)(f(x, y), g(x, y)).</I>
+<P>
+See one of the references in Appendix A for more information.
+<P>
+<B> domain of iteration </B>- Although the map may be defined
+on the entire plane, <B>endo</B> uses a finite grid for its domain
+of iteration. The grid size and location is determined by the
+window width and height and by the user specified minimum and
+maximum x and y values.
+<P>
+<B> dwell</B><!--Dwell--> - The number of iterations which will
+be plotted.
+<P>
+<B> endomorphism</B><!--Endomorphismdefinition--> - A mapping
+of a set into itself, usually noninvertible. That is, the pre-image
+of a point is not always unique. Typically, a planar endomorphism
+<!--Endomorphismaction of--> will &quot;fold&quot;, &quot;stretch&quot;,
+and &quot;rotate&quot; the plane.
+<P>
+<B> Mandelbrot</B> <B>set</B> - This familiar term is used in
+a more general sense in this document. It refers to those parameter
+values for which the point trajectory<!--TrajectoryMandelbrot
+set--> is not attracted to infinity.
+<P>
+ <B>initial conditions </B>- The x and y values used to begin
+the iteration process.
+<P>
+<B> iteration -</B> Repeatedly using the output of a map as its
+input. If the map is defined as :
+<P>
+(x, y)E(x,y)  (F(x, y), G(x, y))
+<P>
+then the second (forward) <B>iterate</B> would be :
+<P>
+E(E(x,y)) = (F(F(x, y), G(x, y)), G(F(x, y), G(x, y)))
+<P>
+<B> Lyapunov exponent</B> - A measure of the rate at which the
+trajectories<!--TrajectoryLyapunov exponent--> of nearby points
+diverge. Two negative Lyapunov exponents are indicative of point
+or periodic attractors. A positive Lyapunov exponent is one characteristic
+of chaotic dynamics. One of the five main <B>endo</B> windows
+graphically displays the Lyapunov exponents.
+<P>
+<B> parameters </B>- A map of the plane is sometimes specified
+with constants and parameters as well as variables. <B>Endo</B>
+uses x and y as its two spatial variables. Each of our included
+maps has two or more parameters that can be varied. Varying a
+parameter can produce changes in the dynamics (e.g. a bifurcation
+<!--Bifurcation--> from a fixed point attractor to a period two
+attractor).
+<P>
+<B> precritical curves</B> - Those points whose trajectory<!--Trajectoryprecritical
+curve--> eventually lies on the critical curve<!--Critical curvesprecritical
+curves-->. One of the five main <B>endo</B> windows displays precritical
+curves.
+<P>
+ <B>settle</B><!--Settle--> - The number of iterates to calculate
+prior to plotting a trajectory.
+<P>
+ <B>trajectory</B> - The trajectory<!--Trajectorydefinition-->
+of a point is the set of all its iterates. That is, the trajectory
+of the point (x,y) is the set :
+<P>
+ (x,y), (F(x,y),G(x,y)), (F(F(x,y),G(x,y)),G(F(x,y),G(x,y))) ...
+ or, letting E(x,y)=(F(x,y),G(x,y)), the set  { (x,y), E(x,y),
+E(E(x,y)), ...}.
+<P>
+One of the five main <B>endo</B> windows displays trajectories.
+<P>
+ <B>view</B><!--View selection--> - The five main <B>endo </B>windows
+each represent a dynamical view. These views are the <I>basins
+of attraction</I>, <I>Lyapunov exponents, point trajectories,
+critical curves,</I> and<I> precritical curves.</I> The point
+trajectories view becomes a bifurcation<!--Bifurcation--> diagram
+when the Lyapunov exponents view is selected and a view of the
+attractor(s) when the basins of attraction view is selected.
+<P>
+<B>1.6 Adding a new map<!--1.6 Adding a new map--></B><!--Adding
+a map-->
+<P>
+To alter an existing map's definition or add a new map to <B>endo
+</B>'s menu of maps, the <B>endo </B>source files must be modified
+and the <B>endo</B> binary recompiled. To do so, follow these
+steps :
+<P>
+ Edit <B>endo.h</B> and add the pair, double, PFP, PFD, and Mapnames
+declarations. Follow the example set by the &quot;standard&quot;
+map or any of the existing maps.
+<P>
+ Edit <B>maps.c</B> and add the map and derivative function definitions.
+Again, follow the example set by mimicking the <I>standard()</I>
+and <I>dstandard()</I> functions.
+<P>
+ Edit <B>params.h</B> adding the numerical values to use in the
+<I>amins, aranges, bmins, branges, pmins, pmaxs, </I>and<I> defparms
+</I> arrays. In each case, when adding the  map, you will be adding
+the  value in the array (which may itself be an array).
+<P>
+ Edit <B>defines.h</B>, incrementing NUMMAPS and increasing NUMDEFS
+by 2.
+<P>
+ Edit <B>info.c</B>, adding a string representation of the map
+definition to the <B>Mapdefs[]</B> array and an entry in the 
+<B>numparams[]</B> array indicating how many parameters the map
+has.
+<P>
+ Execute the command &quot;make clean; make tags; make&quot; and
+copy the resulting <B>endo</B> binary to the installation directory.
+<P>
+An alternative to adding a new map is replacing an existing map.
+This process is somewhat easier and quicker. To do so, only <B>maps.c,
+params.h, </B>and<B> info.c</B> in the above process need to be
+edited. Choose a map to replace and modify these three files,
+altering the map and map derivative definitions in <B>maps.c</B>,
+default numerical values in <B>params.h</B>, string representation
+and number of parameters in <B>info.c</B>. Then recompile using
+the command above.
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue3.gif" ALT="">
+<P><A HREF="../resume.pdf">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Back to Dr. Record's Resume</A> or proceed to
+<A HREF="chapter2.html">Chapter 2 of Dr. Record's Ph.D. Thesis
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

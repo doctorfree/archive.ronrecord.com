@@ -1,0 +1,65 @@
+#c// ####################################################################
+#c// Image Theme created by DaveSource.com
+#c// ####################################################################
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title> 
+      Image: <:=Image_Name() :>
+    </title>
+    <: Meta() :>
+  </head>
+  <body bgcolor='white' text=#444444 link=#ff00ff vlink=#ff00ff>
+
+#c// #########################
+#c// Header/parents
+#c// #########################
+  <table width='95%'>
+    <tr>
+      <td align='left'>
+        <h2> <: pJoin_Parent_Albums(":"); :> </h2>
+      </td>
+      <td align='right'>
+        <h1><a href=<:=Back():>>Back</a></h1>
+      </td>
+    </tr>
+  </table>
+  <hr />
+
+#c// #########################
+#c// Prev, Image, Next
+#c// #########################
+<center>
+  <: Set_Image_Prev(); :>
+  <a href=<:=Image_Page_URL():>>
+  <img width='<:=Get_Opt("x"):>' height='<:=Get_Opt("y"):>' border='0' src=<:=Image_Thumb():> alt=<:=Image_Alt():>><br />
+  <:=Image_Name():></a>
+
+<p>
+
+  <: Set_Image_This(); :>
+  <a href=<:=Image_URL():>>
+  <img border='0' src=<:=Image_Src():> alt=<:=Image_Alt():>></a><br />
+  <font size='+1'><i>
+    <: pImage_Caption() :>
+  </i></font>
+
+<p>
+
+  <: Set_Image_Next(); :>
+  <a href=<:=Image_Page_URL():>>
+  <img width='<:=Get_Opt("x"):>' height='<:=Get_Opt("y"):>' border='0' src=<:=Image_Thumb():> alt=<:=Image_Alt():>><br />
+  <:=Image_Name():></a>
+</center>
+
+#c// #########################
+#c// Footer
+#c// #########################
+<hr />
+    <font size='-1'>
+      <: Credit() :>
+      on <:=scalar localtime:>
+    </font>
+  </body>
+</html>

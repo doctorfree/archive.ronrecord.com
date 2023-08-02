@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>
+How to make Button Bars
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#C0C0C0" TEXT="#000000" LINK="#0000FF" vlink="#238E68"
+BACKGROUND="/jpg/small-wh.jpg">
+
+<CENTER>
+
+<!--#include virtual="/gif/buttons/icons.pcd.inc" -->
+<HR>
+<H1>Standard Button bars
+</H1>
+</CENTER>
+This is inspired by bjelli's work at 
+<A HREF="http://www.cosy.sbg.ac.at/">COSY</A> in Austria.
+<P>
+Button bars are a simple navigation tool.  They contain pointers to
+useful places, usually pointers back to root nodes of the hierarchy.
+Button bars tend to be useful because they are consistent navigation tools
+within the document. They should remain consistent over a
+broad range of documents, thus helping the user build a mental map.
+<P>
+The two sample icon bars are set up for Stanford CS departement, but
+the gist should be clear enough for you to make your own button bar
+files.
+<P><HR><P>
+<H2>Server-side includes</H2>
+The button bars outlined here depend on server side includes.
+The details on how this are at 
+<A HREF="http://hoohoo.ncsa.uiuc.edu/docs/tutorials/includes.html">HooHoo</A>
+at NCSA. [You must have the NCSA server or similar which allows server 
+side includes]
+
+<H2>The Comment to Include a File</H2>
+To include the file we put a comment in the file that is replaced by
+the contents of the file itself.
+<PRE>     &lt;!--#include virtual="/gif/buttons/icons.pcd.inc" --&gt; 
+</PRE>
+Of course, the file name would probably be different, and note that the
+included file <em>must</em> be on the same server as the document.  
+It's not a good idea to try and include button bars stored on other
+servers.  For one thing, it takes too long to load.
+<P>
+Since the <CODE>&lt;!--#include ... &gt;</CODE> is a mouthful for users
+to remember to type, it is a good idea to <A HREF="include.html">include</A> 
+this as part of the standard 
+<A HREF="template.html">template</A>
+file given to users.
+
+
+<H2>The Included File</H2>
+This is the file that is included.  Changing the button bar involves changing
+this file only - the source files remain as they are.
+The site administrator is responsible for maintaining this file.
+<P>
+The <A HREF="/gif/buttons/icons.pcd.inc">PCD include file</A> and  
+the <A HREF="/gif/buttons/icons.csd.inc">CS dept. include file</A> can be downloaded.
+<PRE>
+ &lt;!-- Include file --&gt;
+ &lt;!-- Icon bar for CS dept, PCD group --&gt;
+ &lt;A HREF="http://www.stanford.edu/"&gt;
+      &lt;IMG SRC="/gif/buttons/stanford.seal56.gif" ALT="Stanford"&gt;&lt;/A&gt;
+
+ &lt;A HREF="http://www-cs.stanford.edu/"&gt;
+      &lt;IMG SRC="/gif/buttons/logo.csd.gif" ALT="CS dept"&gt;&lt;/A&gt;
+
+ &lt;A HREF="http://www-pcd.stanford.edu/"&gt;
+      &lt;IMG SRC="/gif/buttons/logo.pcd.gif" ALT="PCD grp"&gt;&lt;/A&gt;
+
+</PRE>
+
+
+<HR>
+
+<!--#include virtual="/gif/buttons/icons.pcd.inc" -->
+
+<HR>
+<ADDRESS>
+Christian Mogensen / mogensen@cs.stanford.edu
+</ADDRESS>
+<CENTER>
+<P><IMG ALIGN=MIDDLE SRC="/gif/buttons/line.blue.gif" ALT="">
+<P><A HREF="index.html">
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
+Return to Welcome Home Page</A> or
+<A HREF="images.html">Continue to Browse
+<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
+</CENTER>
+</BODY>
+</HTML>

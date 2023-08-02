@@ -1,0 +1,133 @@
+<: 
+#c// ####################################################################
+#c// Image theme created by Lucian Precup (lucian_precup@yahoo.com).
+#c// ####################################################################
+#c// 
+
+$THEME_CREDIT = "";
+$PATH = Theme_Path();
+:>
+<html>
+  <head>
+    <title>Image: <:=Image_Name() :></title>
+    <: Meta() :>
+    <LINK REL='stylesheet' HREF='<:=$PATH:>/kde_style.css' TYPE='text/css'>
+  </head>
+<body>
+#c// #########################
+#c// Header/parents
+#c// #########################
+  <table border='0' width='95%' cellspacing='0' cellpadding='0' align='center'>
+    <TR>
+      <td colspan='3' align='left' class='color1'>
+        <b><: pJoin_Parent_Albums(" &gt; "); :></b>
+      </td>
+      <td align='right' class='color1'>
+        <a href=<:=Back():>><img src='<:=$PATH:>/icons/folder_blue_open.png' alt='up' border='0'>&nbsp;up</a>
+      </td>
+    </TR>
+
+#c// #########################
+#c// Prev/next links
+#c// #########################
+    <TR>
+      <td align='left' class='color3'>
+      	<: Set_Image_Prev(); :>
+<: if (Image_Is_Pic()) { :>
+        <a href=<:=Image_Page_URL():>><img src='<:=$PATH:>/icons/back.png' alt='previous' border='0'>&nbsp;<:=Image_Name():></a>
+<: } else { :>
+        <a href=<:=Image_URL():>><img src='<:=$PATH:>/icons/back.png' alt='previous' border='0'>&nbsp;<:=Image_Name():></a>
+<: } :>
+      </td>
+      <td colspan='2' align='center' class='color3'>
+	<: Set_Image_This(); :>
+	<font size='+1'><:=Image_Name() :></font> 
+	(<:=Image_Cnt():> of <:=Images_Left() + Image_Cnt() - 1:>)
+      </td>
+      <td align='right' class='color3'>
+	<: Set_Image_Next(); :>
+<: if (Image_Is_Pic()) { :>
+	<a href=<:=Image_Page_URL():>><:=Image_Name():>&nbsp;<img src='<:=$PATH:>/icons/forward.png' alt='next' border='0'></a>
+<: } else { :>
+	<a href=<:=Image_URL():>><:=Image_Name():>&nbsp;<img src='<:=$PATH:>/icons/forward.png' alt='next' border='0'></a>
+<: } :>
+      </td>
+    </TR>
+    <TR>
+      <TD colspan='4'> &nbsp; </TD>
+    </TR>
+
+#c// ##########################################################
+#c// The image and caption + the previous and next thumbnails
+#c// ##########################################################
+    <TR>
+      <td align='center' valign='middle' class='color2' width='20%'>
+      	<: Set_Image_Prev(); :>
+<: if (Image_Is_Pic() || is_movie()) { :>
+          &nbsp;<a href=<:=Image_Page_URL():>><img src=<:=Image_Thumb():> alt='previous' border='0' HSPACE='7' VSPACE='7'></a>
+<: } else { :>
+          &nbsp;<a href=<:=Image_URL():>><img src='<:=$PATH:>/icons/html.png' alt='previous' border='0' HSPACE='7' VSPACE='7'></a>
+<: } :>
+      </td>
+      <td colspan='2' align='center' valign='middle' class='color2' width='50%'>
+	<: Set_Image_This(); :>
+        <a href=<:=Image_URL():>><:pImage_Src():></a>
+      </td>
+      <td align='center' valign='middle' class='color2' width='20%'>
+	<: Set_Image_Next(); :>
+<: if (Image_Is_Pic() || is_movie()) { :>
+          <a href=<:=Image_Page_URL():>><img src=<:=Image_Thumb():> alt='next' border='0' HSPACE='7' VSPACE='7'></a>&nbsp;
+<: } else { :>
+          <a href=<:=Image_URL():>><img src='<:=$PATH:>/icons/html.png' alt='previous' border='0' HSPACE='7' VSPACE='7'></a>&nbsp;
+<: } :>
+      </td>
+    </TR>
+    <TR>
+      <td align='center' valign='middle' class='color2'>
+	&nbsp;
+      </td>
+      <td colspan='2' align='center' class='color2'>
+	<: Set_Image_This(); :>
+	<i><: pImage_Caption() :></i>
+      </td>
+      <td align='center' valign='middle' class='color2'>
+	&nbsp;
+      </td>
+    </TR>
+    <TR>
+      <TD colspan='4'> &nbsp; </TD>
+    </TR>
+
+#c// ###########################
+#c// Prev/next links again
+#c// ###########################
+    <TR>
+      <td colspan='2' align='left' class='color3'>
+      	<: Set_Image_Prev(); :>
+<: if (Image_Is_Pic()) { :>
+        <a href=<:=Image_Page_URL():>><img src='<:=$PATH:>/icons/back.png' alt='previous' border='0'>&nbsp;<:=Image_Name():></a>
+<: } else { :>
+        <a href=<:=Image_URL():>><img src='<:=$PATH:>/icons/back.png' alt='previous' border='0'>&nbsp;<:=Image_Name():></a>
+<: } :>
+      </td>
+      <td colspan='2' align='right' class='color3'>
+	<: Set_Image_Next(); :>
+<: if (Image_Is_Pic()) { :>
+	<a href=<:=Image_Page_URL():>><:=Image_Name():>&nbsp;<img src='<:=$PATH:>/icons/forward.png' alt='next' border='0'></a>
+<: } else { :>
+	<a href=<:=Image_URL():>><:=Image_Name():>&nbsp;<img src='<:=$PATH:>/icons/forward.png' alt='next' border='0'></a>
+<: } :>
+      </td>
+    </TR>
+
+  </table>
+
+#c// #########################
+#c// Footer
+#c// #########################
+<hr>
+    <font size='-2'>
+      <: Credit() :>. <:=$THEME_CREDIT:> Last updated: <:=scalar localtime:>
+    </font>
+  </body>
+</html>

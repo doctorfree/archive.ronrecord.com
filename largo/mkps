@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd /x/rr/SCO/Forum99/Dave
+mgp2ps -p letter -f largo.ps largo-print.mgp
+
+#     Alternately
+#
+# rm -rf ps
+# mkdir ps
+#
+# cd html
+# for i in mgp000??.gif
+# do
+#     p=`echo $i | sed -e "s/.gif/.ps/"`
+#     gif2ps -i $i > ../ps/$p
+# done

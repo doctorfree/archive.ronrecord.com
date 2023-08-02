@@ -1,0 +1,54 @@
+* {
+    color : white;
+    font-family: san-serif;
+    font-size : medium;
+}
+body {
+    background-color : #103052;
+    margin : 0.5em;
+}
+/* this a blank because top nav bar is not part of flow */
+body>div#top-div {
+    height: 4em ; 
+    margin: 0 0 0 0;
+    position : static;
+}
+/* inside the first cell */
+div>div#hierarchy-div {
+    position : relative;
+    vertical-align: top;
+    text-align : left;
+    background-image : url('nav_bg.png');
+    border-style : groove;
+    border-color : white;
+    padding : 0.5em;
+    margin : 0;
+}
+div>div#hierarchy-div * {
+    font-size : large;
+}
+/* inside the third cell */
+div>div#up-div {
+    /* the up picture with border padding and background */
+    vertical-align: top;
+    background-image : url('nav_bg.png');
+    border-style : groove;
+    border-color : white;
+    padding : 0.5em;
+    font-size : large;
+}
+div#credit-div {
+    color : grey;
+    text-align: right;
+    margin : 0.5em;
+}
+a {
+    color : #4fc1d6;
+    text-decoration: none;
+}
+a:hover {
+   color : yellow;
+}
+span.caption {
+  text-align : center;
+}

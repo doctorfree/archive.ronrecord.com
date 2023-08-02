@@ -1,0 +1,43 @@
+div#hierarchy-div-box {
+    position : fixed;
+    top : 0.5em;
+}
+/* inside the box */
+div#hierarchy-div {
+    position : relative;
+}
+div#up-div-box {
+    position : fixed;
+    top : 0.5em;
+    right : 0.5em;
+}
+/* inside the third cell */
+div#up-div {
+    position : relative;
+}
+/* div to go to previous image */
+div#prev-div {
+    position: fixed; 
+    left: 0.5em;
+    top: 3.5em;
+    font-size : large;
+    margin : 0.5em;
+}
+/* div to go to next image */
+div#next-div {
+    position: fixed; 
+    right: 0.5em;
+    top: 3.5em;
+    font-size : large;
+    margin : 0.5em;
+}
+/* title of the image */
+div#title-div {
+    text-align : center;
+    font-size : large;
+}
+div#credit-div {
+    color : grey;
+    text-align: right;
+    margin : 0.5em;
+}
