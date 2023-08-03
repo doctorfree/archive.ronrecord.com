@@ -1,82 +1,86 @@
 <HTML>
+
 <HEAD>
-<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B"
-ALINK="#FF0000" BACKGROUND="/gif/bk.gif" WIDTH=70 HEIGHT=64>
-<TITLE>Jigsaw</TITLE>
-</HEAD>
-<CENTER>
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/">
-<H1>Jigsaw</H1></A>
-</CENTER>
-The W3C (World Wide Web Consortium) has announced an alpha
-release of Jigsaw, its new object oriented server. Jigsaw is entirely
-written Java, and emphasis on the object-oriented aspect of the HTTP
-protocol.
-<P>
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/">
-http://www.w3.org/pub/WWW/Jigsaw/</A>
-<P>
-Is the corresponding new area of the consortium web site. It links to
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/jigsaw.tar.gz">
-the current distribution</A>, and to the available documentation.
-<P>
-Jigsaw uses as much as possible the dynamic features of Java: each
-resource exported through Jigsaw is a first-class persistent Java
-object that is responsible for implementing the set of methods defined
-by the HTTP protocol. These resource objects are dynamically created
-either by the server itself, or by the server admin and the
-appropriate classes are loaded on demand. Resources can be customized
-through an HTML form-based editor. For more information on Jigsaw
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Introduction/">
-current design and performances</A>, check out:
-<P>
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Introduction/">
-http://www.w3.org/pub/WWW/Jigsaw/User/Introduction/</A>
-<P>
-Jigsaw administration is entirely done through HTML forms. This
-includes authentication (auth realm management, etc.), resource
-customization and general server properties (type of logger, server
-port, etc). The current implementation provides proof of concept, we
-will work on the user interface by itself. For more information on
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Administration/">
-Jigsaw administration</A> check out:
-<P>
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Administration/">
-http://www.w3.org/pub/WWW/Jigsaw/User/Administration/</A>
-<P>
-By overtaking this new effort the consortium has two main goals. The
-first one is to provide a replacement for the CERN-server (as a free
-server, provided with source code). The second one is to provide a
-framework for protocol extensions experimental implementations. Jigsaw
-comes with a server-side implementation of PICS, and a prototype
-implementation of the MUX protocol. More information on the 
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/Activity.html">
-goals of Jigsaw</A> are available from:
-<P>
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/Activity.html">
-http://www.w3.org/pub/WWW/Jigsaw/Activity.html</A>
-<P>
-Jigsaw supports most of the common features. It is HTTP/1.0 compliant,
-supports content negotiation, persistent connections, both Basic and
-IP authentication and the PUT method. Among the pre-defined set of
-resource classes, Jigsaw provide a CommonLog format compatible logger,
-a high-level interface to forms,  CGI script support, and more. For
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/features.html">
-the complete feature list</A>, check out:
-<P>
-<A HREF="http://www.w3.org/pub/WWW/Jigsaw/features.html">
-http://www.w3.org/pub/WWW/Jigsaw/features.html</A>
-<P>
-Finally, the current Jigsaw release is an alpha release, we are
-waiting for your feedback and bug reports before turning it into a
-beta release. 
-<CENTER>
-<P><A HREF="browsers.html">
-<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.left.gif" ALT="">
-Browsers, Servers, etc</A> or
-<A HREF="">
-Ronnie's Home Page
-<IMG ALIGN=MIDDLE SRC="/gif/buttons/arrow.plain.right.gif" ALT=""></A>
-</CENTER>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000080" LINK="#0000FF" VLINK="#A5002B" ALINK="#FF0000" BACKGROUND="gif/bk.gif" WIDTH=70
+  HEIGHT=64>
+  <TITLE>Jigsaw</TITLE>
+  </HEAD>
+  <CENTER>
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/">
+      <H1>Jigsaw</H1>
+    </A>
+  </CENTER>
+  The W3C (World Wide Web Consortium) has announced an alpha
+  release of Jigsaw, its new object oriented server. Jigsaw is entirely
+  written Java, and emphasis on the object-oriented aspect of the HTTP
+  protocol.
+  <P>
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/">
+      http://www.w3.org/pub/WWW/Jigsaw/</A>
+  <P>
+    Is the corresponding new area of the consortium web site. It links to
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/jigsaw.tar.gz">
+      the current distribution</A>, and to the available documentation.
+  <P>
+    Jigsaw uses as much as possible the dynamic features of Java: each
+    resource exported through Jigsaw is a first-class persistent Java
+    object that is responsible for implementing the set of methods defined
+    by the HTTP protocol. These resource objects are dynamically created
+    either by the server itself, or by the server admin and the
+    appropriate classes are loaded on demand. Resources can be customized
+    through an HTML form-based editor. For more information on Jigsaw
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Introduction/">
+      current design and performances</A>, check out:
+  <P>
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Introduction/">
+      http://www.w3.org/pub/WWW/Jigsaw/User/Introduction/</A>
+  <P>
+    Jigsaw administration is entirely done through HTML forms. This
+    includes authentication (auth realm management, etc.), resource
+    customization and general server properties (type of logger, server
+    port, etc). The current implementation provides proof of concept, we
+    will work on the user interface by itself. For more information on
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Administration/">
+      Jigsaw administration</A> check out:
+  <P>
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/User/Administration/">
+      http://www.w3.org/pub/WWW/Jigsaw/User/Administration/</A>
+  <P>
+    By overtaking this new effort the consortium has two main goals. The
+    first one is to provide a replacement for the CERN-server (as a free
+    server, provided with source code). The second one is to provide a
+    framework for protocol extensions experimental implementations. Jigsaw
+    comes with a server-side implementation of PICS, and a prototype
+    implementation of the MUX protocol. More information on the
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/Activity.html">
+      goals of Jigsaw</A> are available from:
+  <P>
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/Activity.html">
+      http://www.w3.org/pub/WWW/Jigsaw/Activity.html</A>
+  <P>
+    Jigsaw supports most of the common features. It is HTTP/1.0 compliant,
+    supports content negotiation, persistent connections, both Basic and
+    IP authentication and the PUT method. Among the pre-defined set of
+    resource classes, Jigsaw provide a CommonLog format compatible logger,
+    a high-level interface to forms, CGI script support, and more. For
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/features.html">
+      the complete feature list</A>, check out:
+  <P>
+    <A HREF="http://www.w3.org/pub/WWW/Jigsaw/features.html">
+      http://www.w3.org/pub/WWW/Jigsaw/features.html</A>
+  <P>
+    Finally, the current Jigsaw release is an alpha release, we are
+    waiting for your feedback and bug reports before turning it into a
+    beta release.
+    <CENTER>
+      <P><A HREF="browsers.html">
+          <IMG ALIGN=MIDDLE SRC="gif/buttons/arrow.plain.left.gif" ALT="">
+          Browsers, Servers, etc</A> or
+        <A HREF="">
+          Ronnie's Home Page
+          <IMG ALIGN=MIDDLE SRC="gif/buttons/arrow.plain.right.gif" ALT=""></A>
+    </CENTER>
 </BODY>
+
 </HTML>
