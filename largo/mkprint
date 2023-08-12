@@ -1,3 +1,0 @@
-#!/bin/sh
-
-psnup -l -b10 -3 largo.ps largo-print.ps
