@@ -48,11 +48,11 @@ Search for Extra-Terrestrial Intelligence at SCO</A></TD></TR>
 <TD ALIGN=CENTER WIDTH="17%"><A HREF="comment-form.html">Comments</A></TD>
 </TR>
 <TR>
-<TD ALIGN=CENTER COLSPAN=2><A HREF="/b_tow/">
+<TD ALIGN=CENTER COLSPAN=2><A HREF="b_tow/">
 <B>Burlacticus Undertow</B></A></TD>
-<TD ALIGN=CENTER COLSPAN=2><A HREF="/today.html">
+<TD ALIGN=CENTER COLSPAN=2><A HREF="today.html">
 On Today's Date In History</A></TD>
-<TD ALIGN=CENTER COLSPAN=2><A HREF="/paulthorn/">
+<TD ALIGN=CENTER COLSPAN=2><A HREF="paulthorn/">
 <B>Paul Thorn</B></A></TD>
 </TR>
 <TR><TD ALIGN=CENTER COLSPAN=6>
