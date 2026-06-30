@@ -22,29 +22,29 @@ Visit the Brand Spanking New Official Undertow Website!</A></TH></TR>
 <TH COLSPAN=3>Flyers</TH></TR>
 <TR>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/next.html>Callahan's with Fuse</A>
+<A HREF=next.html>Callahan's with Fuse</A>
 </TD>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/aptosclub.html>Aptos Club</A>
+<A HREF=aptosclub.html>Aptos Club</A>
 </TD>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/cabletv.html>SC Comm. Cable TV</A>
+<A HREF=cabletv.html>SC Comm. Cable TV</A>
 </TD>
 </TR>
 <TR>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/spring2000.html>Spring 2000</A></TD>
+<A HREF=spring2000.html>Spring 2000</A></TD>
 <TD ALIGN=CENTER>
 <A HREF=cat1.html>Catalyst (1/2000)</A></TD>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/summer2000.html>Summer 2000</A></TD>
+<A HREF=summer2000.html>Summer 2000</A></TD>
 </TR>
 <TR>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/flyers/flyer_inv.JPG>Skinny's (6/11)</A></TD>
+<A HREF=flyers/flyer_inv.JPG>Skinny's (6/11)</A></TD>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/flyers/burningman_front.JPG>Burning Man</A></TD>
+<A HREF=flyers/burningman_front.JPG>Burning Man</A></TD>
 <TD ALIGN=CENTER>
-<A HREF=/b_tow/flyers/Cocodrie.JPG>Cocodrie Lounge</A></TD>
+<A HREF=flyers/Cocodrie.JPG>Cocodrie Lounge</A></TD>
 </TR>
 </TABLE>
